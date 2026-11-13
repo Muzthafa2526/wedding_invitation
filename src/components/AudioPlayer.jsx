@@ -1,153 +1,56 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Music, Disc, Volume2, VolumeX } from 'lucide-react';
+import { Music, Disc, Play, Pause, Volume2, VolumeX, Upload, ExternalLink, X, ChevronUp, ChevronDown } from 'lucide-react';
 
 /**
- * AudioPlayer specifically configured for "Dekh Lena" (Romantic Wedding Version).
- * Features:
- * 1. Automatically plays `/dekh-lena.mp3` from the public directory if present.
- * 2. If no MP3 is found on disk, gracefully falls back to a Web Audio API acoustic
- *    piano synthesis of the melody and chord progression of "Dekh Lena".
- * 3. Does NOT autoplay before user interaction.
- * 4. Includes volume toggle, dynamic equalizer, and song title tooltip.
+ * Premium Luxury Audio Player for "Dekh Lena" (Official Hindi Vocal Song by Arijit Singh & Tulsi Kumar)
+ * Supports:
+ * 1. Embedded Official YouTube stream of "Dekh Lena" (oU86I2n_g0w) for direct vocal playback.
+ * 2. Local MP3 playback from `/dekh-lena.mp3` if placed in public directory.
+ * 3. File selector to load a local MP3 file directly from device.
  */
 export const AudioPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const [hasAudioFile, setHasAudioFile] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [audioSource, setAudioSource] = useState('youtube'); // 'youtube' | 'local'
+  const [localAudioUrl, setLocalAudioUrl] = useState('/dekh-lena.mp3');
+  const [hasLocalFile, setHasLocalFile] = useState(false);
+  const [userUploadedName, setUserUploadedName] = useState(null);
 
   const audioRef = useRef(null);
-  const audioCtxRef = useRef(null);
-  const melodyIntervalRef = useRef(null);
-  const isPlayingRef = useRef(false);
+  const ytPlayerRef = useRef(null);
+  const fileInputRef = useRef(null);
 
   // Check if dekh-lena.mp3 exists in public folder
   useEffect(() => {
     const audio = new Audio('/dekh-lena.mp3');
     audio.addEventListener('canplaythrough', () => {
-      setHasAudioFile(true);
+      setHasLocalFile(true);
     });
     audio.addEventListener('error', () => {
-      setHasAudioFile(false);
+      setHasLocalFile(false);
     });
-    audioRef.current = audio;
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
-    };
   }, []);
 
-  // "Dekh Lena" Acoustic Piano Melody Notes & Chords (Bm -> G -> D -> A progression)
-  // [frequency in Hz, duration in seconds, delay from phrase start]
-  const dekhLenaPhrases = [
-    // Phrase 1: "Dekh lena..." (over Bm chord)
-    {
-      chord: [123.47, 185.00, 246.94, 293.66], // Bm
-      melody: [
-        { f: 369.99, d: 0.6, t: 0.2 },  // F#4 "Dekh"
-        { f: 392.00, d: 0.5, t: 0.8 },  // G4   "le"
-        { f: 369.99, d: 0.8, t: 1.3 },  // F#4  "na..."
-        { f: 329.63, d: 0.5, t: 2.1 },  // E4
-        { f: 293.66, d: 0.7, t: 2.6 },  // D4
-      ],
-    },
-    // Phrase 2: "Dekh lena..." (over G Major chord)
-    {
-      chord: [98.00, 146.83, 196.00, 246.94], // G
-      melody: [
-        { f: 293.66, d: 0.6, t: 0.2 },  // D4   "Dekh"
-        { f: 329.63, d: 0.5, t: 0.8 },  // E4   "le"
-        { f: 293.66, d: 0.8, t: 1.3 },  // D4   "na..."
-        { f: 277.18, d: 0.5, t: 2.1 },  // C#4
-        { f: 246.94, d: 0.7, t: 2.6 },  // B3
-      ],
-    },
-    // Phrase 3: "Kismat se chura ke..." (over D Major chord)
-    {
-      chord: [146.83, 220.00, 293.66, 369.99], // D
-      melody: [
-        { f: 369.99, d: 0.4, t: 0.1 },  // F#4  "Kis-"
-        { f: 392.00, d: 0.4, t: 0.5 },  // G4   "-mat"
-        { f: 440.00, d: 0.7, t: 0.9 },  // A4   "se"
-        { f: 392.00, d: 0.4, t: 1.6 },  // G4   "chu-"
-        { f: 369.99, d: 0.4, t: 2.0 },  // F#4  "-ra"
-        { f: 329.63, d: 0.8, t: 2.4 },  // E4   "ke..."
-      ],
-    },
-    // Phrase 4: "Hothon pe saja ke dekh lena..." (over A Major chord)
-    {
-      chord: [110.00, 164.81, 220.00, 277.18], // A
-      melody: [
-        { f: 329.63, d: 0.4, t: 0.1 },  // E4
-        { f: 369.99, d: 0.4, t: 0.5 },  // F#4
-        { f: 392.00, d: 0.4, t: 0.9 },  // G4
-        { f: 369.99, d: 0.4, t: 1.3 },  // F#4
-        { f: 329.63, d: 0.5, t: 1.7 },  // E4
-        { f: 293.66, d: 0.5, t: 2.2 },  // D4
-        { f: 277.18, d: 0.8, t: 2.7 },  // C#4
-      ],
-    },
-  ];
+  // Handle local file selection
+  const handleFileChange = (e) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      setLocalAudioUrl(url);
+      setUserUploadedName(file.name);
+      setAudioSource('local');
+      setHasLocalFile(true);
 
-  let phraseIndex = 0;
-
-  const playSynthesizedNote = (freq, startTime, duration, isChord = false) => {
-    if (!audioCtxRef.current) return;
-    const ctx = audioCtxRef.current;
-    if (ctx.state === 'suspended') ctx.resume();
-
-    const osc = ctx.createOscillator();
-    const gainNode = ctx.createGain();
-
-    // Warm soft sine with gentle triangle overtone
-    osc.type = isChord ? 'sine' : 'triangle';
-    osc.frequency.setValueAtTime(freq, startTime);
-
-    // Warm felt-piano low-pass filter
-    const filter = ctx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(isChord ? 700 : 1200, startTime);
-
-    const baseVol = isChord ? 0.04 : 0.09;
-    const finalVol = isMuted ? 0 : baseVol;
-
-    gainNode.gain.setValueAtTime(0.0001, startTime);
-    gainNode.gain.exponentialRampToValueAtTime(finalVol, startTime + 0.08);
-    gainNode.gain.exponentialRampToValueAtTime(finalVol * 0.4, startTime + duration * 0.6);
-    gainNode.gain.exponentialRampToValueAtTime(0.00001, startTime + duration);
-
-    osc.connect(filter);
-    filter.connect(gainNode);
-    gainNode.connect(ctx.destination);
-
-    osc.start(startTime);
-    osc.stop(startTime + duration + 0.1);
+      if (audioRef.current) {
+        audioRef.current.src = url;
+        audioRef.current.play().then(() => setIsPlaying(true)).catch(() => {});
+      }
+    }
   };
 
-  const playNextPhrase = () => {
-    if (!isPlayingRef.current || !audioCtxRef.current) return;
-    const ctx = audioCtxRef.current;
-    const phrase = dekhLenaPhrases[phraseIndex % dekhLenaPhrases.length];
-    phraseIndex++;
-
-    const now = ctx.currentTime;
-
-    // Play soft backing chord arpeggios
-    phrase.chord.forEach((freq, idx) => {
-      playSynthesizedNote(freq, now + idx * 0.25, 3.6, true);
-    });
-
-    // Play "Dekh Lena" melody notes
-    phrase.melody.forEach((note) => {
-      playSynthesizedNote(note.f, now + note.t, note.d, false);
-    });
-  };
-
-  const toggleMusic = () => {
-    if (hasAudioFile && audioRef.current) {
+  const togglePlayback = () => {
+    if (audioSource === 'local') {
+      if (!audioRef.current) return;
       if (isPlaying) {
         audioRef.current.pause();
         setIsPlaying(false);
@@ -155,105 +58,184 @@ export const AudioPlayer = () => {
         audioRef.current.play().then(() => {
           setIsPlaying(true);
         }).catch(() => {
-          // Fall back to synthesizer if browser restricts
-          startSynthesizer();
+          setIsPlaying(false);
         });
       }
-      return;
-    }
-
-    // Web Audio Synthesizer Toggle
-    if (isPlaying) {
-      isPlayingRef.current = false;
-      setIsPlaying(false);
-      if (melodyIntervalRef.current) {
-        clearInterval(melodyIntervalRef.current);
-        melodyIntervalRef.current = null;
-      }
     } else {
-      startSynthesizer();
-    }
-  };
-
-  const startSynthesizer = () => {
-    if (!audioCtxRef.current) {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      audioCtxRef.current = new AudioContext();
-    }
-    isPlayingRef.current = true;
-    setIsPlaying(true);
-    if (audioCtxRef.current.state === 'suspended') {
-      audioCtxRef.current.resume();
-    }
-    playNextPhrase();
-    melodyIntervalRef.current = setInterval(() => {
-      playNextPhrase();
-    }, 3400);
-  };
-
-  useEffect(() => {
-    return () => {
-      if (melodyIntervalRef.current) clearInterval(melodyIntervalRef.current);
-      if (audioCtxRef.current) {
-        audioCtxRef.current.close().catch(() => {});
+      // Toggle YouTube Playback via postMessage to iframe
+      const iframe = document.getElementById('youtube-dekh-lena-iframe');
+      if (iframe && iframe.contentWindow) {
+        if (isPlaying) {
+          iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+          setIsPlaying(false);
+        } else {
+          iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+          setIsPlaying(true);
+        }
+      } else {
+        setIsPlaying(!isPlaying);
       }
-    };
-  }, []);
+    }
+  };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
-      {/* Tooltip */}
-      {showTooltip && (
-        <div className="hidden sm:block bg-burgundy-950/95 backdrop-blur-md px-4 py-2.5 rounded-full border border-gold-400/60 shadow-gold-glow text-xs text-gold-200 font-serif">
-          {isPlaying ? (
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-gold-400 animate-ping"></span>
-              <strong>Now Playing:</strong> Dekh Lena (Romantic Wedding Instrumental)
-            </span>
-          ) : (
-            <span>Play Music: <strong>Dekh Lena</strong></span>
-          )}
-        </div>
-      )}
+    <>
+      {/* Hidden HTML5 Audio Element for Local MP3 */}
+      <audio
+        ref={audioRef}
+        src={localAudioUrl}
+        loop
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        className="hidden"
+      />
 
-      {/* Floating Metallic Gold Music Button */}
-      <button
-        onClick={toggleMusic}
-        onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
-        aria-label={isPlaying ? "Pause Dekh Lena music" : "Play Dekh Lena music"}
-        className={`group relative flex items-center gap-2.5 px-4.5 py-3 rounded-full shadow-gold-glow border transition-all duration-300 ${
-          isPlaying
-            ? 'bg-burgundy-900 text-gold-200 border-gold-400 ring-2 ring-gold-400/40'
-            : 'bg-burgundy-950/95 hover:bg-burgundy-900 text-gold-400 border-gold-500/70'
-        }`}
-      >
-        <span className="relative flex items-center justify-center">
-          {isPlaying ? (
-            <Disc className="w-5 h-5 animate-spin text-gold-300" style={{ animationDuration: '4s' }} />
-          ) : (
-            <Music className="w-5 h-5 text-gold-400 group-hover:text-gold-200 transition-colors" />
-          )}
-        </span>
+      {/* Hidden / Background YouTube IFrame for Official Hindi Vocal Song */}
+      <div className="fixed -top-[9999px] -left-[9999px] pointer-events-none opacity-0">
+        <iframe
+          id="youtube-dekh-lena-iframe"
+          title="Dekh Lena Hindi Song - Arijit Singh"
+          width="320"
+          height="180"
+          src={`https://www.youtube-nocookie.com/embed/oU86I2n_g0w?enablejsapi=1&origin=${typeof window !== 'undefined' ? window.location.origin : ''}`}
+          allow="autoplay; encrypted-media"
+        />
+      </div>
 
-        {/* Dynamic Equalizer Bars */}
-        {isPlaying ? (
-          <div className="flex items-end gap-[3px] h-4">
-            <span className="w-1 bg-gold-400 rounded-full animate-bounce" style={{ height: '70%', animationDuration: '0.7s' }}></span>
-            <span className="w-1 bg-gold-300 rounded-full animate-bounce" style={{ height: '100%', animationDuration: '0.5s' }}></span>
-            <span className="w-1 bg-gold-200 rounded-full animate-bounce" style={{ height: '60%', animationDuration: '0.8s' }}></span>
-          </div>
-        ) : (
-          <div className="flex flex-col text-left">
-            <span className="text-[10px] uppercase tracking-wider text-gold-400/80 font-serif font-bold">
-              Music
-            </span>
-            <span className="text-xs font-serif tracking-wider font-semibold text-gold-200">
-              Dekh Lena
-            </span>
+      {/* Hidden file input for custom MP3 upload */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="audio/*"
+        onChange={handleFileChange}
+        className="hidden"
+      />
+
+      {/* FLOATING MUSIC CONTROLLER (Bottom Right) */}
+      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 font-serif">
+        {/* Expanded Music Player Card */}
+        {expanded && (
+          <div className="bg-gradient-to-b from-burgundy-900 to-burgundy-950 p-5 rounded-3xl border-2 border-gold-400 shadow-2xl max-w-xs w-80 text-gold-100 animate-fadeIn relative">
+            {/* Header with Close */}
+            <div className="flex items-center justify-between pb-3 border-b border-gold-400/30">
+              <span className="text-[10px] uppercase tracking-[0.25em] text-gold-400 font-semibold">
+                Wedding Soundtrack
+              </span>
+              <button
+                onClick={() => setExpanded(false)}
+                className="text-gold-300 hover:text-white p-1"
+                aria-label="Close music panel"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Song Details */}
+            <div className="my-4 text-center">
+              <div className="w-16 h-16 rounded-full bg-burgundy-800 border-2 border-gold-400 mx-auto flex items-center justify-center shadow-gold-glow mb-3">
+                <Disc className={`w-8 h-8 text-gold-300 ${isPlaying ? 'animate-spin' : ''}`} style={{ animationDuration: '4s' }} />
+              </div>
+              <h4 className="font-calligraphy text-2xl text-gold-light leading-tight">
+                Dekh Lena
+              </h4>
+              <p className="text-xs text-gold-300 font-serif mt-0.5">
+                Arijit Singh &amp; Tulsi Kumar
+              </p>
+              <p className="text-[10px] text-gold-400/80 uppercase tracking-widest mt-1">
+                Movie: Tum Bin 2 • Hindi Vocals
+              </p>
+            </div>
+
+            {/* Play / Pause Big Button */}
+            <div className="flex items-center justify-center gap-4 my-4">
+              <button
+                onClick={togglePlayback}
+                className="w-14 h-14 rounded-full gold-shimmer-btn flex items-center justify-center text-burgundy-950 shadow-gold-glow hover:scale-105 active:scale-95 transition-transform"
+                aria-label={isPlaying ? "Pause Song" : "Play Song"}
+              >
+                {isPlaying ? <Pause className="w-6 h-6 fill-burgundy-950" /> : <Play className="w-6 h-6 fill-burgundy-950 ml-0.5" />}
+              </button>
+            </div>
+
+            {/* Sound Source Switcher / Options */}
+            <div className="pt-3 border-t border-gold-400/30 space-y-2 text-xs">
+              <div className="flex items-center justify-between text-[11px] text-gold-300">
+                <span>Audio Source:</span>
+                <span className="font-semibold text-gold-200">
+                  {audioSource === 'youtube' ? 'Official Hindi Song' : (userUploadedName || 'Local Audio')}
+                </span>
+              </div>
+
+              {/* Upload Song MP3 Button */}
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                className="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-burgundy-800/80 hover:bg-burgundy-800 border border-gold-400/50 text-gold-200 text-xs font-serif transition-colors"
+              >
+                <Upload className="w-3.5 h-3.5 text-gold-400" />
+                <span>Select / Change MP3 File</span>
+              </button>
+
+              <p className="text-[9px] text-center text-gold-400/70 italic mt-1">
+                Plays official vocal Hindi track. You can also place dekh-lena.mp3 in the public folder.
+              </p>
+            </div>
           </div>
         )}
-      </button>
-    </div>
+
+        {/* Floating Pill Toggle Button */}
+        <div className="flex items-center gap-2">
+          {/* Quick Expand Toggle Arrow */}
+          <button
+            onClick={() => setExpanded(!expanded)}
+            aria-label="Toggle music options"
+            className="w-9 h-9 rounded-full bg-burgundy-950/90 border border-gold-400/60 text-gold-300 flex items-center justify-center shadow-gold-glow hover:bg-burgundy-900 transition-colors"
+          >
+            {expanded ? <ChevronDown className="w-4 h-4" /> : <ChevronUp className="w-4 h-4" />}
+          </button>
+
+          {/* Main Play/Pause Music Button */}
+          <button
+            onClick={togglePlayback}
+            aria-label={isPlaying ? "Pause Dekh Lena" : "Play Dekh Lena Hindi Song"}
+            className={`group flex items-center gap-2.5 px-4.5 py-3 rounded-full shadow-gold-glow border transition-all duration-300 ${
+              isPlaying
+                ? 'bg-burgundy-900 text-gold-200 border-gold-400 ring-2 ring-gold-400/40'
+                : 'bg-burgundy-950/95 hover:bg-burgundy-900 text-gold-300 border-gold-500/70'
+            }`}
+          >
+            <span className="relative flex items-center justify-center">
+              {isPlaying ? (
+                <Disc className="w-5 h-5 animate-spin text-gold-300" style={{ animationDuration: '4s' }} />
+              ) : (
+                <Play className="w-4 h-4 fill-gold-400 text-gold-400 group-hover:scale-110 transition-transform" />
+              )}
+            </span>
+
+            {/* Dynamic Sound Equalizer */}
+            {isPlaying ? (
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-semibold text-gold-200">
+                  Dekh Lena (Playing)
+                </span>
+                <div className="flex items-end gap-[3px] h-4">
+                  <span className="w-1 bg-gold-400 rounded-full animate-bounce" style={{ height: '70%', animationDuration: '0.6s' }}></span>
+                  <span className="w-1 bg-gold-300 rounded-full animate-bounce" style={{ height: '100%', animationDuration: '0.4s' }}></span>
+                  <span className="w-1 bg-gold-200 rounded-full animate-bounce" style={{ height: '50%', animationDuration: '0.7s' }}></span>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-col text-left">
+                <span className="text-[10px] uppercase tracking-wider text-gold-400/80 font-bold leading-none">
+                  Hindi Song
+                </span>
+                <span className="text-xs tracking-wider font-semibold text-gold-200 leading-tight">
+                  Dekh Lena
+                </span>
+              </div>
+            )}
+          </button>
+        </div>
+      </div>
+    </>
   );
 };
