@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { InvitationCardCover } from './components/InvitationCardCover';
 import { Navbar } from './components/Navbar';
-import { HeroLanding } from './components/HeroLanding';
-import { InvitationCard } from './components/InvitationCard';
+import { MainHero } from './components/MainHero';
+import { InvitationMessage } from './components/InvitationMessage';
 import { CountdownTimer } from './components/CountdownTimer';
 import { CoupleDetails } from './components/CoupleDetails';
 import { LoveStory } from './components/LoveStory';
@@ -9,79 +11,95 @@ import { EventsTimeline } from './components/EventsTimeline';
 import { VenueSection } from './components/VenueSection';
 import { GallerySection } from './components/GallerySection';
 import { QuotesSection } from './components/QuotesSection';
-import { RSVPSection } from './components/RSVPSection';
 import { Footer } from './components/Footer';
 import { AudioPlayer } from './components/AudioPlayer';
-import { FallingPetals } from './components/FallingPetals';
-import { ShareModal } from './components/ShareModal';
+import { GoldParticles } from './components/GoldParticles';
 
 export function App() {
-  const [isOpened, setIsOpened] = useState(false);
-  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpenInvitation = () => {
-    setIsOpened(true);
+  // Disable vertical scrolling completely on initial screen until "Open Wedding Invitation" is clicked
+  useEffect(() => {
+    if (!isOpen) {
+      document.body.style.overflow = 'hidden';
+      window.scrollTo(0, 0);
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen]);
+
+  const handleOpenWebsite = () => {
+    setIsOpen(true);
   };
 
   return (
-    <div className="min-h-screen bg-cream-200 text-olive-900 font-sans selection:bg-gold-500 selection:text-white relative">
-      {/* Ambient Canvas Falling Petals & Leaves */}
-      <FallingPetals />
+    <div className="min-h-screen bg-burgundy-900 text-gold-100 font-sans selection:bg-gold-500 selection:text-burgundy-950 relative">
+      {/* Subtle Ethereal Gold Dust Particles Effect */}
+      <GoldParticles />
 
-      {/* Floating Audio Controller */}
-      <AudioPlayer />
+      {/* 
+        STRICT REQUIREMENT 4:
+        Initially, ONLY the invitation card is visible.
+        The main website remains hidden until the visitor clicks "OPEN WEDDING INVITATION".
+      */}
+      <AnimatePresence>
+        {!isOpen && (
+          <InvitationCardCover onOpenWebsite={handleOpenWebsite} />
+        )}
+      </AnimatePresence>
 
-      {/* Top Navigation */}
-      <Navbar
-        isOpened={isOpened}
-        onOpenInvitation={handleOpenInvitation}
-      />
+      {/* Main Wedding Website (Revealed upon opening) */}
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="relative"
+        >
+          {/* Floating Gold Audio Controller */}
+          <AudioPlayer />
 
-      <main>
-        {/* 1. Welcome / Landing Screen with Envelope Opening */}
-        <HeroLanding
-          isOpened={isOpened}
-          onOpenInvitation={handleOpenInvitation}
-        />
+          {/* Sticky Luxury Navigation */}
+          <Navbar />
 
-        {/* 2. Official Wedding Invitation Card */}
-        <InvitationCard
-          onOpenShare={() => setIsShareModalOpen(true)}
-        />
+          <main>
+            {/* 1. Full-Screen Wedding Hero Section */}
+            <MainHero />
 
-        {/* 3. Live Countdown Timer */}
-        <CountdownTimer />
+            {/* 2. Formal Wedding Invitation Card & Message (Exact replica of reference card) */}
+            <InvitationMessage />
 
-        {/* 4. Bride & Groom Dedicated Details */}
-        <CoupleDetails />
+            {/* 3. Live Countdown Timer for January 17, 2027 */}
+            <div id="countdown">
+              <CountdownTimer />
+            </div>
 
-        {/* 5. Couple's Romantic Love Story Timeline */}
-        <LoveStory />
+            {/* 4. Dedicated Groom (Samju M.C) & Bride (Fahiza K.K) Sections */}
+            <CoupleDetails />
 
-        {/* 6. Wedding Events & Schedule */}
-        <EventsTimeline />
+            {/* 5. Couple's Love Story Timeline */}
+            <LoveStory />
 
-        {/* 7. Wedding Venue / Hall Details & Google Maps */}
-        <VenueSection />
+            {/* 6. Wedding Events Timeline (Haldi, Nikah Ceremony, Reception) */}
+            <EventsTimeline />
 
-        {/* 8. Wedding Moments / Gallery with Lightbox */}
-        <GallerySection />
+            {/* 7. Wedding Venue (Nalanda Convention Centre) & Google Maps */}
+            <VenueSection />
 
-        {/* 9. Romantic Quotes Section */}
-        <QuotesSection />
+            {/* 8. Wedding Moments Gallery with Lightbox */}
+            <GallerySection />
 
-        {/* 10. RSVP Form with WhatsApp integration */}
-        <RSVPSection />
-      </main>
+            {/* 9. Romantic Literary & Quranic Quotes Carousel */}
+            <QuotesSection />
+          </main>
 
-      {/* 11. Footer & Thank You */}
-      <Footer />
-
-      {/* Share Invitation Modal */}
-      <ShareModal
-        isOpen={isShareModalOpen}
-        onClose={() => setIsShareModalOpen(false)}
-      />
+          {/* 10. Footer & Closing Gratitude */}
+          <Footer />
+        </motion.div>
+      )}
     </div>
   );
 }

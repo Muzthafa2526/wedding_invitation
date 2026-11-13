@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { weddingData } from '../data/weddingData';
-import { BotanicalDivider, CornerFlourish } from './FloralDecorations';
-import { MapPin, Navigation, ExternalLink, ShieldCheck, Car, Home, Compass } from 'lucide-react';
+import { GoldenDiamondDivider, GoldenFloralBlossom } from './FloralDecorations';
+import { MapPin, Navigation, ExternalLink, ShieldCheck } from 'lucide-react';
 
 export const VenueSection = () => {
   const { venue } = weddingData;
@@ -13,17 +13,17 @@ export const VenueSection = () => {
   )}`;
 
   return (
-    <section id="venue" className="py-24 px-4 bg-cream-50 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section id="venue" className="py-24 px-4 bg-burgundy-900 luxury-fabric-texture relative overflow-hidden">
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <span className="font-serif text-xs md:text-sm uppercase tracking-[0.3em] text-olive-700 font-semibold">
-            Destination &amp; Setting
+          <span className="font-serif text-xs md:text-sm uppercase tracking-[0.35em] text-gold-400 font-semibold">
+            Grand Destination &amp; Location
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-olive-900 mt-1">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-gold-light mt-1">
             The Wedding Venue
           </h2>
-          <BotanicalDivider className="mx-auto" />
-          <p className="font-serif italic text-olive-700 text-sm max-w-lg mx-auto mt-2">
+          <GoldenDiamondDivider className="mx-auto" />
+          <p className="font-serif italic text-gold-200/90 text-sm max-w-lg mx-auto mt-2">
             {venue.tagline}
           </p>
         </div>
@@ -36,19 +36,19 @@ export const VenueSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-7 bg-cream-100/70 p-6 sm:p-8 rounded-3xl border border-gold-300/60 shadow-luxury"
+            className="lg:col-span-7 bg-gradient-to-b from-burgundy-800 to-burgundy-950 p-6 sm:p-8 rounded-3xl border border-gold-400/50 shadow-gold-glow"
           >
             {/* Featured Image */}
-            <div className="relative aspect-video rounded-2xl overflow-hidden border-2 border-gold-400/50 shadow-md mb-4">
+            <div className="relative aspect-video rounded-2xl overflow-hidden border-2 border-gold-400/60 shadow-xl mb-4">
               <img
                 src={venue.images[activeImageIdx]}
                 alt={venue.name}
                 className="w-full h-full object-cover transition-all duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-              <div className="absolute bottom-3 left-4 text-cream-100 font-serif">
-                <span className="text-xs uppercase tracking-widest text-gold-300">Sanctuary</span>
-                <h4 className="text-lg font-semibold">{venue.name}</h4>
+              <div className="absolute inset-0 bg-gradient-to-t from-burgundy-950/80 via-transparent to-transparent"></div>
+              <div className="absolute bottom-4 left-5 text-gold-100 font-serif">
+                <span className="text-xs uppercase tracking-widest text-gold-400 font-semibold">Ceremony Destination</span>
+                <h4 className="text-xl font-bold text-gold-light">{venue.name}</h4>
               </div>
             </div>
 
@@ -60,8 +60,8 @@ export const VenueSection = () => {
                   onClick={() => setActiveImageIdx(idx)}
                   className={`aspect-video rounded-xl overflow-hidden border-2 transition-all ${
                     activeImageIdx === idx
-                      ? 'border-gold-500 scale-102 shadow-md ring-2 ring-gold-400/30'
-                      : 'border-transparent opacity-75 hover:opacity-100'
+                      ? 'border-gold-300 scale-102 shadow-md ring-2 ring-gold-400/50'
+                      : 'border-transparent opacity-60 hover:opacity-100'
                   }`}
                 >
                   <img src={img} alt="Thumbnail" className="w-full h-full object-cover" />
@@ -70,60 +70,58 @@ export const VenueSection = () => {
             </div>
 
             {/* Description */}
-            <h3 className="font-serif text-2xl text-olive-900 font-semibold mb-2">
+            <h3 className="font-serif text-2xl text-gold-light font-semibold mb-2">
               {venue.name}
             </h3>
-            <p className="font-serif text-sm text-olive-800 leading-relaxed mb-6">
+            <p className="font-serif text-sm text-gold-100/90 leading-relaxed mb-6">
               {venue.description}
             </p>
 
             {/* Amenities Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-gold-300/40 pt-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-gold-400/30 pt-6">
               {venue.amenities.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-olive-100 flex items-center justify-center text-olive-700 shrink-0 mt-0.5">
-                    <ShieldCheck className="w-3.5 h-3.5 text-gold-600" />
+                  <div className="w-7 h-7 rounded-full bg-burgundy-900 border border-gold-400/60 flex items-center justify-center text-gold-400 shrink-0 mt-0.5">
+                    <ShieldCheck className="w-4 h-4 text-gold-400" />
                   </div>
                   <div>
-                    <h5 className="font-serif font-semibold text-xs uppercase tracking-wider text-olive-900">
+                    <h5 className="font-serif font-semibold text-xs uppercase tracking-wider text-gold-200">
                       {item.title}
                     </h5>
-                    <p className="font-serif text-xs text-olive-700">{item.desc}</p>
+                    <p className="font-serif text-xs text-gold-300/80">{item.desc}</p>
                   </div>
                 </div>
               ))}
             </div>
           </motion.div>
 
-          {/* Right Column: Address & Interactive Google Maps (5 cols) */}
+          {/* Right Column: Address & Embedded Google Maps (5 cols) */}
           <motion.div
             initial={{ opacity: 0, x: 25 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-5 bg-cream-100/70 p-6 sm:p-8 rounded-3xl border border-gold-300/60 shadow-luxury flex flex-col justify-between h-full relative"
+            className="lg:col-span-5 bg-gradient-to-b from-burgundy-800 to-burgundy-950 p-6 sm:p-8 rounded-3xl border border-gold-400/50 shadow-gold-glow flex flex-col justify-between h-full"
           >
-            <CornerFlourish position="top-right" className="absolute top-3 right-3 w-8 h-8 text-gold-500/50" />
-
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-olive-100 text-olive-800 font-serif text-xs font-semibold uppercase tracking-wider mb-4">
-                <MapPin className="w-3.5 h-3.5 text-gold-600" />
-                <span>Location Details</span>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-burgundy-900 border border-gold-400/50 text-gold-300 font-serif text-xs font-semibold uppercase tracking-wider mb-4">
+                <MapPin className="w-3.5 h-3.5 text-gold-400" />
+                <span>Venue &amp; Coordinates</span>
               </div>
 
-              <h4 className="font-serif text-xl font-semibold text-olive-900 mb-2">
-                Estate Address
+              <h4 className="font-serif text-2xl font-semibold text-gold-light mb-2">
+                Hall Address
               </h4>
-              <p className="font-serif text-sm text-olive-800 leading-relaxed mb-4">
+              <p className="font-serif text-sm text-gold-200 leading-relaxed mb-4">
                 {venue.address}
                 <br />
-                <span className="text-olive-600">{venue.cityState}</span>
+                <span className="text-gold-400 font-medium">{venue.cityState}</span>
               </p>
 
               {/* Embedded Google Map */}
-              <div className="w-full h-64 rounded-2xl overflow-hidden border border-gold-300/60 shadow-inner mb-6 relative bg-cream-200">
+              <div className="w-full h-64 rounded-2xl overflow-hidden border border-gold-400/60 shadow-inner mb-6 relative bg-burgundy-950">
                 <iframe
-                  title="Venue Google Map"
+                  title="Nalanda Convention Centre Google Map"
                   src={venue.embedMapUrl}
                   width="100%"
                   height="100%"
@@ -131,20 +129,20 @@ export const VenueSection = () => {
                   allowFullScreen=""
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="filter contrast-95"
+                  className="filter contrast-95 invert-[0.85] hue-rotate-[180deg]"
                 ></iframe>
               </div>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gold-300/40">
+            <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gold-400/30">
               <a
                 href={venue.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-olive-700 hover:bg-olive-800 text-cream-100 font-serif text-xs uppercase tracking-widest shadow-sm transition-all hover:shadow-luxury hover:-translate-y-0.5 border border-gold-400/40"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full gold-shimmer-btn font-serif text-xs uppercase tracking-widest font-bold shadow-md transition-all hover:-translate-y-0.5"
               >
-                <ExternalLink className="w-4 h-4 text-gold-400" />
+                <ExternalLink className="w-4 h-4 text-burgundy-950" />
                 <span>View Location</span>
               </a>
 
@@ -152,9 +150,9 @@ export const VenueSection = () => {
                 href={getDirectionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-cream-50 hover:bg-cream-200 text-olive-900 font-serif text-xs uppercase tracking-widest shadow-sm transition-all hover:-translate-y-0.5 border border-gold-400/60"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-burgundy-900 hover:bg-burgundy-800 text-gold-200 font-serif text-xs uppercase tracking-widest border border-gold-400/60 transition-all hover:-translate-y-0.5"
               >
-                <Navigation className="w-4 h-4 text-gold-600" />
+                <Navigation className="w-4 h-4 text-gold-400" />
                 <span>Get Directions</span>
               </a>
             </div>
@@ -164,4 +162,3 @@ export const VenueSection = () => {
     </section>
   );
 };
-

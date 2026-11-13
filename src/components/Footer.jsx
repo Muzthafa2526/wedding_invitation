@@ -1,10 +1,14 @@
 import React from 'react';
 import { weddingData } from '../data/weddingData';
-import { BotanicalDivider, OliveBranchLeft, OliveBranchRight, LaurelWreath } from './FloralDecorations';
+import {
+  GoldenDiamondDivider,
+  InterlockedGoldenRings,
+  GoldenFloralBlossom,
+} from './FloralDecorations';
 import { Heart, ArrowUp } from 'lucide-react';
 
 export const Footer = () => {
-  const { couple, invitation } = weddingData;
+  const { couple, invitation, venue } = weddingData;
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -14,46 +18,41 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-cream-200 pt-20 pb-12 px-4 border-t border-gold-300/40 text-center overflow-hidden">
-      {/* Decorative side branches */}
-      <div className="absolute -bottom-6 -left-6 opacity-40 pointer-events-none hidden sm:block">
-        <OliveBranchLeft className="w-32 h-32 text-olive-600" />
+    <footer className="relative bg-gradient-to-b from-burgundy-900 to-burgundy-950 luxury-fabric-texture pt-20 pb-12 px-4 border-t border-gold-400/40 text-center overflow-hidden">
+      {/* Decorative Blossoms */}
+      <div className="absolute -bottom-6 -left-6 opacity-30 pointer-events-none hidden sm:block">
+        <GoldenFloralBlossom className="w-36 h-36 text-gold-400" />
       </div>
-      <div className="absolute -bottom-6 -right-6 opacity-40 pointer-events-none hidden sm:block">
-        <OliveBranchRight className="w-32 h-32 text-olive-600" />
+      <div className="absolute -bottom-6 -right-6 opacity-30 pointer-events-none hidden sm:block">
+        <GoldenFloralBlossom className="w-36 h-36 text-gold-400" flip={true} />
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
-        {/* Thank You Note */}
-        <div className="mb-12">
-          <LaurelWreath className="w-20 h-20 text-gold-500/80 mx-auto mb-4">
-            <Heart className="w-6 h-6 text-gold-500 fill-gold-500" />
-          </LaurelWreath>
-
-          <span className="font-serif text-xs uppercase tracking-[0.3em] text-olive-700 font-semibold">
-            With Heartfelt Gratitude
+        {/* Top Blessing Badge */}
+        <div className="mb-8">
+          <InterlockedGoldenRings className="mx-auto mb-4" />
+          <span className="font-serif text-xs uppercase tracking-[0.35em] text-gold-400 font-semibold">
+            Forever Begins Here
           </span>
-
-          <h3 className="font-serif text-3xl sm:text-4xl text-olive-900 font-semibold mt-2 mb-4">
-            Thank You For Being Part Of Our Story
-          </h3>
-
-          <p className="font-serif italic text-olive-800 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
-            "Your presence, love, and prayers are the greatest gifts we could ever receive as we begin this new chapter of our lives together."
+          <h2 className="font-calligraphy text-4xl sm:text-6xl text-gold-light font-normal mt-2 mb-3">
+            {couple.groom.shortName} <span className="font-serif text-3xl sm:text-4xl text-gold-300 font-light">&amp;</span> {couple.bride.shortName}
+          </h2>
+          <p className="font-serif text-xs uppercase tracking-[0.25em] text-gold-300">
+            {invitation.dateFull} • {venue.name}
           </p>
         </div>
 
-        <BotanicalDivider className="mx-auto" />
+        <GoldenDiamondDivider className="mx-auto" />
 
-        {/* Couple Names & Date */}
-        <div className="my-8">
-          <h2 className="font-serif text-3xl sm:text-4xl text-olive-900 font-semibold">
-            {couple.bride.firstName} <span className="font-script text-3xl text-gold-600">&amp;</span> {couple.groom.firstName}
-          </h2>
-          <p className="font-serif text-xs uppercase tracking-widest text-gold-700 mt-2">
-            {invitation.dateFormatted} • {weddingData.venue.name}
+        {/* Gratitude Message */}
+        <div className="my-8 max-w-xl mx-auto">
+          <h3 className="font-serif text-2xl sm:text-3xl text-gold-light font-semibold mb-3">
+            Thank You For Being Part Of Our Special Day
+          </h3>
+          <p className="font-serif italic text-gold-200/90 text-sm leading-relaxed">
+            "Your heartfelt presence, warm blessings, and prayers are the greatest gift as we begin this sacred journey of marriage together."
           </p>
-          <p className="font-serif text-xs text-olive-600 tracking-wider mt-1">
+          <p className="font-serif text-xs text-gold-400 tracking-wider mt-4">
             {couple.hashtag}
           </p>
         </div>
@@ -63,26 +62,24 @@ export const Footer = () => {
           <button
             onClick={scrollToTop}
             aria-label="Back to top"
-            className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-cream-50 hover:bg-cream-100 border border-gold-300 text-olive-800 font-serif text-xs uppercase tracking-widest shadow-sm transition-all hover:shadow-luxury hover:-translate-y-1"
+            className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-burgundy-900 hover:bg-burgundy-800 border border-gold-400/60 text-gold-200 font-serif text-xs uppercase tracking-widest shadow-gold-glow transition-all hover:-translate-y-1"
           >
             <span>Back To Top</span>
-            <ArrowUp className="w-4 h-4 text-gold-600 group-hover:-translate-y-0.5 transition-transform" />
+            <ArrowUp className="w-4 h-4 text-gold-400 group-hover:-translate-y-0.5 transition-transform" />
           </button>
         </div>
 
-        {/* Made with Love credit & copyright */}
-        <div className="pt-6 border-t border-gold-300/30 text-xs font-serif text-olive-600/80 flex flex-col sm:flex-row items-center justify-between gap-3">
+        {/* Copyright */}
+        <div className="pt-6 border-t border-gold-400/25 text-xs font-serif text-gold-400/70 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p>
-            &copy; 2026 {couple.bride.firstName} &amp; {couple.groom.firstName}. All rights reserved.
+            &copy; 2027 {couple.groom.shortName} &amp; {couple.bride.shortName}. All rights reserved.
           </p>
           <p className="flex items-center gap-1.5">
-            <span>Made with</span>
-            <Heart className="w-3.5 h-3.5 text-gold-600 fill-gold-600 inline" />
-            <span>for our celebration of love</span>
+            <span>Crafted with devotion for our celebration of love</span>
+            <Heart className="w-3.5 h-3.5 text-gold-400 fill-gold-400 inline" />
           </p>
         </div>
       </div>
     </footer>
   );
 };
-
