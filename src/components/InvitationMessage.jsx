@@ -7,43 +7,10 @@ import {
   GoldenLaurelSprig,
   GoldenFloralBlossom,
 } from './FloralDecorations';
-import { Clock, MapPin, Calendar, BookmarkPlus } from 'lucide-react';
+import { Clock, MapPin } from 'lucide-react';
 
 export const InvitationMessage = () => {
   const { couple, invitation, venue } = weddingData;
-
-  const downloadIcs = () => {
-    const icsData = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Samju & Fahiza Wedding//EN',
-      'BEGIN:VEVENT',
-      'SUMMARY:Wedding of Samju M.C & Fahiza K.K',
-      `DESCRIPTION:${invitation.invitationHeading} at ${venue.name}.`,
-      `LOCATION:${venue.name}, ${venue.address}`,
-      'DTSTART:20270117T110000',
-      'DTEND:20270117T170000',
-      'STATUS:CONFIRMED',
-      'END:VEVENT',
-      'END:VCALENDAR',
-    ].join('\r\n');
-
-    const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = window.URL.createObjectURL(blob);
-    link.setAttribute('download', 'Samju-and-Fahiza-Wedding.ics');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  const googleCalUrl = () => {
-    const title = encodeURIComponent(`The Wedding of ${couple.groom.fullName} & ${couple.bride.fullName}`);
-    const details = encodeURIComponent(`${invitation.invitationHeading}. Ceremony at ${venue.name}.`);
-    const location = encodeURIComponent(`${venue.name}, ${venue.address}`);
-    const dates = '20270117T053000Z/20270117T113000Z';
-    return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dates}`;
-  };
 
   return (
     <section
@@ -178,27 +145,6 @@ export const InvitationMessage = () => {
             <span className="font-invitation-serif text-[10px] uppercase tracking-[0.3em] text-gold-400 block mt-1 font-semibold">
               {invitation.inshaAllahEn}
             </span>
-          </div>
-
-          {/* Calendar Actions */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mt-8 pt-6 border-t border-gold-400/30">
-            <button
-              onClick={downloadIcs}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-burgundy-950 hover:bg-burgundy-900 text-gold-200 font-invitation-serif text-xs uppercase tracking-widest border border-gold-400/60 shadow-sm transition-all hover:-translate-y-0.5"
-            >
-              <BookmarkPlus className="w-3.5 h-3.5 text-gold-400" />
-              <span>Download iCal / Outlook</span>
-            </button>
-
-            <a
-              href={googleCalUrl()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full gold-shimmer-btn font-invitation-serif text-xs uppercase tracking-widest font-bold shadow-md transition-all hover:-translate-y-0.5"
-            >
-              <Calendar className="w-3.5 h-3.5 text-burgundy-950" />
-              <span>Google Calendar</span>
-            </a>
           </div>
         </motion.div>
       </div>
