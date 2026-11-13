@@ -17,7 +17,7 @@ export const weddingData = {
     bride: {
       firstName: "Fahiza",
       fullName: "Fahiza K.K",
-      shortName: "Fahiza K.K",
+      shortName: "Fahiza K",
       title: "The Bride",
       parents: "Daughter of Mr. K.K. Abdul Rasheed & Mrs. Jameela K.K",
       bio: "Radiant, creative, and endowed with gentle grace. Fahiza cherishes family traditions, art, and heartfelt smiles. Her joyful spirit and kind soul illuminate every room she enters. In Samju, she found her lifelong confidant and forever love.",

@@ -119,7 +119,7 @@ export const MainHero = () => {
             <span className="text-[10px] sm:text-[11px] font-invitation-serif uppercase tracking-[0.3em]">
               Explore The Wedding Story
             </span>
-            <div className="w-5 h-8 rounded-full border border-gold-400/60 flex items-start justify-center p-1">
+            <div className="w-5 h-8 rounded-full bg-burgundy-900/60 shadow-[0_0_10px_rgba(212,175,103,0.3)] flex items-start justify-center p-1">
               <div className="w-1.5 h-2 bg-gold-400 rounded-full animate-bounce"></div>
             </div>
           </a>

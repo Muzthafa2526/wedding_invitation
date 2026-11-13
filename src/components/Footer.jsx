@@ -18,7 +18,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-gradient-to-b from-burgundy-900 to-burgundy-950 luxury-fabric-texture pt-20 pb-12 px-4 border-t border-gold-400/40 text-center overflow-hidden">
+    <footer className="relative bg-gradient-to-b from-burgundy-900/90 to-burgundy-950/95 luxury-fabric-texture pt-20 pb-12 px-4 text-center overflow-hidden">
       {/* Decorative Blossoms */}
       <div className="absolute -bottom-6 -left-6 opacity-30 pointer-events-none hidden sm:block">
         <GoldenFloralBlossom className="w-36 h-36 text-gold-400" />
@@ -31,14 +31,14 @@ export const Footer = () => {
         {/* Top Blessing Badge */}
         <div className="mb-8">
           <InterlockedGoldenRings className="mx-auto mb-4" />
-          <span className="font-invitation-serif text-xs uppercase tracking-[0.35em] text-gold-400 font-semibold">
+          <span className="font-invitation-serif italic text-xs uppercase tracking-[0.35em] text-gold-400 font-semibold">
             Forever Begins Here
           </span>
-          <h2 className="font-invitation-script text-3xl sm:text-4xl md:text-5xl text-gold-light font-normal mt-2 mb-3">
-            {couple.groom.shortName} <span className="font-serif text-2xl sm:text-3xl text-gold-300 font-light">&amp;</span> {couple.bride.shortName}
+          <h2 className="font-invitation-script italic text-3xl sm:text-4xl md:text-5xl text-gold-light font-normal mt-2 mb-3">
+            {couple.groom.shortName} <span className="font-serif italic text-2xl sm:text-3xl text-gold-300 font-light">&amp;</span> {couple.bride.shortName}
           </h2>
-          <p className="font-invitation-serif text-xs uppercase tracking-[0.25em] text-gold-300">
-            {invitation.dateFull} • {venue.name}
+          <p className="font-invitation-serif italic text-xs uppercase tracking-[0.25em] text-gold-300">
+            {invitation.dateFormatted} • {venue.name}
           </p>
         </div>
 
@@ -46,31 +46,31 @@ export const Footer = () => {
 
         {/* Gratitude Message */}
         <div className="my-8 max-w-xl mx-auto">
-          <h3 className="font-invitation-serif text-xl sm:text-2xl text-gold-light font-semibold mb-3">
+          <h3 className="font-invitation-serif italic text-xl sm:text-2xl text-gold-light font-semibold mb-3">
             Thank You For Being Part Of Our Special Day
           </h3>
           <p className="font-invitation-body italic text-gold-200/90 text-base leading-relaxed">
             "Your heartfelt presence, warm blessings, and prayers are the greatest gift as we begin this sacred journey of marriage together."
           </p>
-          <p className="font-invitation-serif text-xs text-gold-400 tracking-wider mt-4">
+          <p className="font-invitation-serif italic text-xs text-gold-400 tracking-wider mt-4">
             {couple.hashtag}
           </p>
         </div>
 
-        {/* Back To Top Button */}
+        {/* Back To Top Button — Borderless */}
         <div className="my-8">
           <button
             onClick={scrollToTop}
             aria-label="Back to top"
-            className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-burgundy-900 hover:bg-burgundy-800 border border-gold-400/60 text-gold-200 font-invitation-serif text-xs uppercase tracking-widest shadow-gold-glow transition-all hover:-translate-y-1 cursor-pointer"
+            className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-burgundy-900/90 hover:bg-burgundy-800 text-gold-200 font-invitation-serif italic text-xs uppercase tracking-widest shadow-[0_4px_20px_rgba(0,0,0,0.6),0_0_15px_rgba(212,175,103,0.25)] transition-all hover:-translate-y-1 cursor-pointer"
           >
             <span>Back To Top</span>
             <ArrowUp className="w-4 h-4 text-gold-400 group-hover:-translate-y-0.5 transition-transform" />
           </button>
         </div>
 
-        {/* Copyright */}
-        <div className="pt-6 border-t border-gold-400/25 text-xs font-invitation-body text-gold-400/70 flex flex-col sm:flex-row items-center justify-between gap-3">
+        {/* Copyright — Borderless */}
+        <div className="pt-6 text-xs font-invitation-body italic text-gold-400/70 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p>
             &copy; 2027 {couple.groom.shortName} &amp; {couple.bride.shortName}. All rights reserved.
           </p>
