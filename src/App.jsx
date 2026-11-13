@@ -40,6 +40,9 @@ export function App() {
       {/* Subtle Ethereal Gold Dust Particles Effect */}
       <GoldParticles />
 
+      {/* Preloaded Luxury Audio Engine (Plays automatically on unseal) */}
+      <AudioPlayer isWebsiteOpened={isOpen} />
+
       {/* 
         STRICT REQUIREMENT 4:
         Initially, ONLY the invitation card is visible.
@@ -59,9 +62,6 @@ export function App() {
           transition={{ duration: 1 }}
           className="relative"
         >
-          {/* Floating Gold Audio Controller */}
-          <AudioPlayer />
-
           {/* Sticky Luxury Navigation */}
           <Navbar />
 
@@ -69,7 +69,7 @@ export function App() {
             {/* 1. Full-Screen Wedding Hero Section */}
             <MainHero />
 
-            {/* 2. Formal Wedding Invitation Card & Message (Exact replica of reference card) */}
+            {/* 2. Formal Wedding Invitation Card & Message */}
             <InvitationMessage />
 
             {/* 3. Live Countdown Timer for January 17, 2027 */}

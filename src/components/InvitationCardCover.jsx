@@ -10,7 +10,10 @@ export const InvitationCardCover = ({ onOpenWebsite }) => {
     if (isOpening) return;
     setIsOpening(true);
 
-    // Celebratory metallic gold and champagne confetti shower
+    // 1. Immediately trigger open & audio playback within user click gesture!
+    onOpenWebsite();
+
+    // 2. Celebratory metallic gold and champagne confetti shower
     try {
       confetti({
         particleCount: 120,
@@ -23,15 +26,13 @@ export const InvitationCardCover = ({ onOpenWebsite }) => {
       // safe fallback
     }
 
+    // 3. Smooth scroll down to main hero section
     setTimeout(() => {
-      onOpenWebsite();
-      setTimeout(() => {
-        const heroElem = document.getElementById('wedding-hero');
-        if (heroElem) {
-          heroElem.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 350);
-    }, 1000);
+      const heroElem = document.getElementById('wedding-hero');
+      if (heroElem) {
+        heroElem.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 450);
   };
 
   return (
@@ -75,7 +76,7 @@ export const InvitationCardCover = ({ onOpenWebsite }) => {
             onClick={handleOpenClick}
             disabled={isOpening}
             aria-label="Open Wedding Invitation"
-            className="group relative inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full gold-shimmer-btn font-serif font-bold text-xs sm:text-sm tracking-[0.25em] uppercase shadow-lg transition-all duration-300 w-full max-w-xs sm:max-w-sm"
+            className="group relative inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full gold-shimmer-btn font-serif font-bold text-xs sm:text-sm tracking-[0.25em] uppercase shadow-lg transition-all duration-300 w-full max-w-xs sm:max-w-sm cursor-pointer"
           >
             <Sparkles className="w-4 h-4 text-burgundy-950 animate-spin" style={{ animationDuration: '8s' }} />
             <span>{isOpening ? 'Opening Invitation...' : 'Open Wedding Invitation'}</span>
