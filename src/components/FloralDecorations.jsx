@@ -181,3 +181,42 @@ export const GoldenLaurelSprig = ({ direction = "left", className = "w-8 h-16 te
     <ellipse cx="22" cy="12" rx="4" ry="2" transform="rotate(-60 22 12)" fill="url(#laurelGold)" />
   </svg>
 );
+
+/**
+ * Royal Corner Flourish for Double-Line Gold Frame
+ */
+export const RoyalCornerFlourish = ({ className = "w-10 h-10 text-gold-400", position = "top-left" }) => {
+  const transform = {
+    "top-left": "",
+    "top-right": "-scale-x-100",
+    "bottom-left": "-scale-y-100",
+    "bottom-right": "-scale-x-100 -scale-y-100",
+  }[position] || "";
+
+  return (
+    <svg
+      viewBox="0 0 50 50"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`${className} ${transform}`}
+    >
+      <defs>
+        <linearGradient id="cornerGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FFF4DF" />
+          <stop offset="40%" stopColor="#F1D99A" />
+          <stop offset="70%" stopColor="#D4AF67" />
+          <stop offset="100%" stopColor="#A77B35" />
+        </linearGradient>
+      </defs>
+      {/* Outer corner L */}
+      <path d="M 2 40 L 2 2 L 40 2" stroke="url(#cornerGoldGrad)" strokeWidth="1.5" strokeLinecap="round" />
+      {/* Inner corner L */}
+      <path d="M 7 32 L 7 7 L 32 7" stroke="url(#cornerGoldGrad)" strokeWidth="1" strokeLinecap="round" opacity="0.75" />
+      {/* Corner blossom dot and decorative petal curves */}
+      <circle cx="7" cy="7" r="2.5" fill="#FFF4DF" />
+      <path d="M 7 7 Q 20 12, 30 2" stroke="url(#cornerGoldGrad)" strokeWidth="1.2" strokeLinecap="round" />
+      <path d="M 7 7 Q 12 20, 2 30" stroke="url(#cornerGoldGrad)" strokeWidth="1.2" strokeLinecap="round" />
+      <circle cx="2" cy="2" r="1.5" fill="url(#cornerGoldGrad)" />
+    </svg>
+  );
+};

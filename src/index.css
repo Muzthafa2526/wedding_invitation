@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-maroon-dark: #1F0005;
+  --color-maroon-deep: #2B0008;
+  --color-burgundy: #43000D;
+  --color-wine: #590014;
+  --color-gold-metallic: #D4AF67;
+  --color-gold-champagne: #F1D99A;
+  --color-gold-light: #FFF4DF;
+  --color-gold-dark: #A77B35;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -9,15 +20,15 @@
   }
 
   body {
-    background-color: #1F0005;
+    background-color: var(--color-maroon-dark);
     background-image: 
-      radial-gradient(ellipse 90% 80% at 50% 40%, rgba(67, 0, 13, 0.4) 0%, rgba(20, 0, 4, 0.85) 100%),
+      radial-gradient(ellipse 90% 80% at 50% 40%, rgba(67, 0, 13, 0.35) 0%, rgba(20, 0, 4, 0.85) 100%),
       url('/wedding-marble-bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    color: #FFF4DF;
+    color: var(--color-gold-light);
     overflow-x: hidden;
     font-family: 'Cormorant Garamond', 'Georgia', serif;
     font-style: italic !important;
@@ -34,11 +45,11 @@
   }
 
   /* 
-    Exact Invitation Card Background applied to the ENTIRE website:
-    Uses the real high-res invitation background texture with soft vignette
+    Pristine Deep Burgundy Velvet / Marble Texture Background
+    Zero ghosting, zero watermarks, smooth radial vignette
   */
   .luxury-fabric-texture {
-    background-color: #1F0005;
+    background-color: var(--color-maroon-dark);
     background-image: 
       radial-gradient(ellipse 90% 80% at 50% 40%, rgba(67, 0, 13, 0.35) 0%, rgba(20, 0, 4, 0.8) 100%),
       url('/wedding-marble-bg.jpg');
@@ -56,12 +67,12 @@
     background: #140003;
   }
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #D4AF67 0%, #A77B35 100%);
+    background: linear-gradient(180deg, var(--color-gold-metallic) 0%, var(--color-gold-dark) 100%);
     border-radius: 4px;
     border: none;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #F1D99A;
+    background: var(--color-gold-champagne);
   }
 }
 
@@ -98,7 +109,7 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Seamless Card Container - No Harsh Border Line */
+  /* Seamless Card Container */
   .border-gold-card {
     border: none !important;
     box-shadow: 0 25px 70px rgba(10, 0, 2, 0.95);
@@ -107,7 +118,7 @@
   /* Metallic Gold Button with Shimmer */
   .gold-shimmer-btn {
     background: linear-gradient(135deg, #E5C07B 0%, #F5D78E 35%, #D4AF67 70%, #A77B35 100%);
-    color: #220005;
+    color: var(--color-maroon-deep);
     font-weight: 700;
     font-style: italic !important;
     border: none !important;
@@ -118,10 +129,10 @@
     transform: translateY(-2px);
   }
 
-  /* Champagne Gold Gradient Button with animated light sweep */
+  /* Luxury Champagne Gold Gradient Button with animated light sweep */
   .champagne-gold-btn {
-    background: linear-gradient(135deg, #FFF6E5 0%, #F1D99A 25%, #D4AF67 60%, #BA9248 85%, #9E742C 100%);
-    color: #2B0008 !important;
+    background: linear-gradient(135deg, #FFF8EC 0%, #F1D99A 25%, #D4AF67 60%, #BA9248 85%, #9E742C 100%);
+    color: #260006 !important;
     font-weight: 700;
     font-style: italic !important;
     position: relative;
@@ -140,20 +151,80 @@
     background: linear-gradient(
       90deg,
       transparent,
-      rgba(255, 255, 255, 0.55),
+      rgba(255, 255, 255, 0.65),
       transparent
     );
     transform: rotate(25deg);
-    animation: goldShimmerSweep 4.5s infinite;
+    animation: goldShimmerSweep 4s infinite;
   }
   .champagne-gold-btn:hover {
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85), 0 0 35px rgba(241, 217, 154, 0.75), 0 0 20px rgba(212, 175, 103, 0.95);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85), 0 0 40px rgba(241, 217, 154, 0.8), 0 0 20px rgba(212, 175, 103, 0.95);
     transform: translateY(-2px);
+  }
+
+  /* Shimmer text effect */
+  .text-gold-shimmer {
+    background: linear-gradient(
+      90deg,
+      #D4AF67 0%,
+      #FFF4DF 25%,
+      #F1D99A 50%,
+      #FFF8EA 75%,
+      #D4AF67 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShimmerSweep 7s linear infinite;
+  }
+
+  /* Ribbon ambient glow */
+  .ribbon-glow-animate {
+    animation: ribbonGentleGlow 5s ease-in-out infinite;
+  }
+
+  @keyframes textShimmerSweep {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes ribbonGentleGlow {
+    0%, 100% {
+      filter: drop-shadow(0 0 10px rgba(212, 175, 103, 0.35));
+      opacity: 0.95;
+    }
+    50% {
+      filter: drop-shadow(0 0 24px rgba(245, 217, 154, 0.7));
+      opacity: 1;
+    }
+  }
+
+  @keyframes floatSlow {
+    0% {
+      transform: translateY(0px) scale(0.9);
+      opacity: 0.15;
+    }
+    50% {
+      transform: translateY(-40px) scale(1.1);
+      opacity: 0.55;
+    }
+    100% {
+      transform: translateY(-80px) scale(0.9);
+      opacity: 0.15;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .text-gold-shimmer,
+    .ribbon-glow-animate,
+    .champagne-gold-btn::after {
+      animation: none !important;
+    }
   }
 }
 
 @keyframes goldShimmerSweep {
   0% { left: -100%; }
-  25% { left: 200%; }
+  30% { left: 200%; }
   100% { left: 200%; }
 }
