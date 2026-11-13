@@ -5,7 +5,7 @@ import songAudio from '../assets/dekh-lena.mp3';
 /**
  * Premium Luxury Audio Controller for "Dekh Lena"
  * Automatically starts playing as soon as the visitor clicks "Open Wedding Invitation".
- * Borderless luxury gold floating toggle medallion with live equalizer.
+ * Features an elegant, refined golden medallion floating toggle button.
  */
 export const AudioPlayer = ({ isWebsiteOpened }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -65,10 +65,10 @@ export const AudioPlayer = ({ isWebsiteOpened }) => {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 font-serif">
       {/* Floating Hover Tooltip */}
       {showTooltip && (
-        <div className="hidden sm:block bg-burgundy-950/95 backdrop-blur-md px-4 py-2 rounded-full shadow-[0_10px_25px_rgba(0,0,0,0.8),0_0_15px_rgba(212,175,103,0.3)] text-xs text-gold-200 font-invitation-serif italic">
+        <div className="hidden sm:block bg-burgundy-950/95 backdrop-blur-md px-4 py-2 rounded-full border border-gold-400/70 shadow-gold-glow text-xs text-gold-200">
           {isPlaying ? (
             <span className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-gold-400 animate-ping"></span>
@@ -80,16 +80,16 @@ export const AudioPlayer = ({ isWebsiteOpened }) => {
         </div>
       )}
 
-      {/* Redesigned Luxury Gold Music Medallion Button — Borderless */}
+      {/* Redesigned Luxury Gold Music Medallion Button */}
       <button
         onClick={togglePlayback}
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
         aria-label={isPlaying ? "Pause Dekh Lena music" : "Play Dekh Lena music"}
-        className={`group relative flex items-center gap-2.5 px-4 py-2.5 rounded-full transition-all duration-300 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.85),0_0_20px_rgba(212,175,103,0.35)] ${
+        className={`group relative flex items-center gap-2.5 px-4 py-2.5 rounded-full border transition-all duration-300 shadow-gold-glow cursor-pointer ${
           isPlaying
-            ? 'bg-gradient-to-r from-burgundy-900 via-burgundy-950 to-burgundy-900 text-gold-100 hover:shadow-[0_10px_35px_rgba(0,0,0,0.9),0_0_30px_rgba(212,175,103,0.5)]'
-            : 'bg-burgundy-950/95 hover:bg-burgundy-900 text-gold-300'
+            ? 'bg-gradient-to-r from-burgundy-900 to-burgundy-950 text-gold-200 border-gold-400 ring-2 ring-gold-400/40 hover:border-gold-300'
+            : 'bg-burgundy-950/90 hover:bg-burgundy-900 text-gold-400 border-gold-500/70'
         }`}
       >
         {/* Spinning Gold Disc or Play Icon */}
@@ -104,11 +104,11 @@ export const AudioPlayer = ({ isWebsiteOpened }) => {
           )}
         </span>
 
-        {/* Dynamic Soundwave Equalizer or Song Title in Italic */}
+        {/* Dynamic Soundwave Equalizer or Song Title */}
         {isPlaying ? (
-          <div className="flex items-center gap-2 font-invitation-serif italic">
+          <div className="flex items-center gap-2">
             <span className="text-xs font-semibold text-gold-100 tracking-wider">
-              Dekh Lena (Playing)
+              Dekh Lena
             </span>
             <div className="flex items-end gap-[3px] h-3.5">
               <span
@@ -126,7 +126,7 @@ export const AudioPlayer = ({ isWebsiteOpened }) => {
             </div>
           </div>
         ) : (
-          <div className="flex items-center gap-1.5 font-invitation-serif italic">
+          <div className="flex items-center gap-1.5">
             <Music className="w-3.5 h-3.5 text-gold-400" />
             <span className="text-xs font-semibold text-gold-300 tracking-wider">
               Play Music
