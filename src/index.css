@@ -10,20 +10,41 @@
 
   body {
     background-color: #1F0005;
+    background-image: 
+      radial-gradient(ellipse 90% 80% at 50% 40%, rgba(67, 0, 13, 0.4) 0%, rgba(20, 0, 4, 0.85) 100%),
+      url('/wedding-marble-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #FFF4DF;
     overflow-x: hidden;
     font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-style: italic !important;
     letter-spacing: 0.02em;
   }
 
-  /* Deep Burgundy Marble / Velvet Cloud Smoky Texture */
+  /* All typography converted to elegant romantic italic */
+  *, *::before, *::after {
+    font-style: italic !important;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, a, span, button, blockquote, input, select, textarea, div, label, li {
+    font-style: italic !important;
+  }
+
+  /* 
+    Exact Invitation Card Background applied to the ENTIRE website:
+    Uses the real high-res invitation background texture with soft vignette
+  */
   .luxury-fabric-texture {
     background-color: #1F0005;
     background-image: 
-      radial-gradient(ellipse 80% 60% at 70% 30%, rgba(115, 0, 28, 0.5) 0%, transparent 70%),
-      radial-gradient(ellipse 60% 70% at 25% 75%, rgba(89, 0, 20, 0.45) 0%, transparent 65%),
-      radial-gradient(circle 600px at 50% 40%, rgba(67, 0, 13, 0.5) 0%, transparent 80%),
-      linear-gradient(145deg, #180004 0%, #2B0008 35%, #3D000C 65%, #1F0005 100%);
+      radial-gradient(ellipse 90% 80% at 50% 40%, rgba(67, 0, 13, 0.35) 0%, rgba(20, 0, 4, 0.8) 100%),
+      url('/wedding-marble-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
   }
 
@@ -37,7 +58,7 @@
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #D4AF67 0%, #A77B35 100%);
     border-radius: 4px;
-    border: 1px solid rgba(241, 217, 154, 0.4);
+    border: none;
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #F1D99A;
@@ -48,18 +69,20 @@
   /* Exact Calligraphy Script from Reference Card */
   .font-invitation-script {
     font-family: 'Pinyon Script', 'Alex Brush', 'Great Vibes', cursive !important;
-    font-style: italic;
+    font-style: italic !important;
     font-weight: 400;
   }
 
-  /* Regal Roman / Serif Typography for Badges & Headlines */
+  /* Regal Roman / Serif Typography for Badges & Headlines in Italic */
   .font-invitation-serif {
     font-family: 'Cinzel', 'Cormorant Garamond', 'Georgia', serif !important;
+    font-style: italic !important;
     letter-spacing: 0.22em;
   }
 
   .font-invitation-body {
     font-family: 'Cormorant Garamond', 'Georgia', serif !important;
+    font-style: italic !important;
   }
 
   /* Metallic Gold Text Gradients */
@@ -75,13 +98,10 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Thin Metallic Gold Frame with soft ambient shadow */
+  /* Seamless Card Container - No Harsh Border Line */
   .border-gold-card {
-    border: 1px solid rgba(212, 175, 103, 0.65);
-    box-shadow: 
-      0 20px 50px rgba(18, 0, 4, 0.9), 
-      0 0 25px rgba(212, 175, 103, 0.2),
-      inset 0 0 15px rgba(89, 0, 20, 0.5);
+    border: none !important;
+    box-shadow: 0 25px 70px rgba(10, 0, 2, 0.95);
   }
 
   /* Metallic Gold Button with Shimmer */
@@ -89,10 +109,51 @@
     background: linear-gradient(135deg, #E5C07B 0%, #F5D78E 35%, #D4AF67 70%, #A77B35 100%);
     color: #220005;
     font-weight: 700;
+    font-style: italic !important;
+    border: none !important;
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .gold-shimmer-btn:hover {
     box-shadow: 0 0 35px rgba(245, 215, 142, 0.65), 0 0 12px rgba(212, 175, 103, 0.9);
     transform: translateY(-2px);
   }
+
+  /* Champagne Gold Gradient Button with animated light sweep */
+  .champagne-gold-btn {
+    background: linear-gradient(135deg, #FFF6E5 0%, #F1D99A 25%, #D4AF67 60%, #BA9248 85%, #9E742C 100%);
+    color: #2B0008 !important;
+    font-weight: 700;
+    font-style: italic !important;
+    position: relative;
+    overflow: hidden;
+    border: none !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 103, 0.45);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .champagne-gold-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 60%;
+    height: 200%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.55),
+      transparent
+    );
+    transform: rotate(25deg);
+    animation: goldShimmerSweep 4.5s infinite;
+  }
+  .champagne-gold-btn:hover {
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.85), 0 0 35px rgba(241, 217, 154, 0.75), 0 0 20px rgba(212, 175, 103, 0.95);
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes goldShimmerSweep {
+  0% { left: -100%; }
+  25% { left: 200%; }
+  100% { left: 200%; }
 }
