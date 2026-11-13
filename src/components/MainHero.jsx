@@ -124,3 +124,4 @@ export const MainHero = () => {
     </section>
   );
 };
+

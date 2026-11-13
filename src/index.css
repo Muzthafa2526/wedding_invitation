@@ -9,75 +9,92 @@
   }
 
   body {
-    background-color: #F8F4E9;
-    color: #32371E;
+    background-color: #220005;
+    color: #FFF4DF;
     overflow-x: hidden;
     font-family: 'Montserrat', sans-serif;
   }
 
-  /* Custom subtle paper texture overlay */
-  .paper-texture {
-    background-color: #FAF7F0;
-    background-image: radial-gradient(#C5A46D 0.5px, transparent 0.5px), radial-gradient(#737B4B 0.5px, #FAF7F0 0.5px);
-    background-size: 24px 24px;
-    background-position: 0 0, 12px 12px;
-    background-blend-mode: overlay;
+  /* Exact Deep Burgundy Marble / Velvet Cloud Smoky Texture from Reference Image */
+  .luxury-fabric-texture {
+    background-color: #1F0005;
+    background-image: 
+      radial-gradient(ellipse 80% 60% at 70% 30%, rgba(115, 0, 28, 0.5) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 70% at 25% 75%, rgba(89, 0, 20, 0.45) 0%, transparent 65%),
+      radial-gradient(circle 600px at 50% 40%, rgba(67, 0, 13, 0.5) 0%, transparent 80%),
+      linear-gradient(145deg, #180004 0%, #2B0008 35%, #3D000C 65%, #1F0005 100%);
+    background-attachment: fixed;
   }
 
-  /* Custom Scrollbar */
+  /* Custom Luxury Gold Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #F4EFE6;
+    background: #140003;
   }
   ::-webkit-scrollbar-thumb {
-    background: #C5A46D;
+    background: linear-gradient(180deg, #D4AF67 0%, #A77B35 100%);
     border-radius: 4px;
+    border: 1px solid rgba(241, 217, 154, 0.4);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #737B4B;
+    background: #F1D99A;
   }
 }
 
 @layer utilities {
+  /* Metallic Gold Text Gradients */
   .text-gold-gradient {
-    background: linear-gradient(135deg, #B28E51 0%, #D5B87E 50%, #8D6E37 100%);
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF4DF 20%, #F1D99A 45%, #D4AF67 75%, #A77B35 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  .text-olive-gradient {
-    background: linear-gradient(135deg, #737B4B 0%, #454B2A 100%);
+  .text-gold-light {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF8EA 30%, #F1D99A 70%, #D4AF67 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  .border-double-gold {
-    border: 3px double #C5A46D;
+  /* Exact Card Border from Reference: Thin Metallic Gold Frame with soft ambient shadow */
+  .border-gold-card {
+    border: 1px solid rgba(212, 175, 103, 0.65);
+    box-shadow: 
+      0 20px 50px rgba(18, 0, 4, 0.9), 
+      0 0 25px rgba(212, 175, 103, 0.2),
+      inset 0 0 15px rgba(89, 0, 20, 0.5);
   }
 
-  .border-card-luxury {
-    border: 1px solid rgba(197, 164, 109, 0.35);
-    box-shadow: 0 15px 35px -5px rgba(115, 123, 75, 0.08), 0 0 0 6px rgba(248, 244, 233, 0.9), 0 0 0 7px rgba(197, 164, 109, 0.25);
+  .border-gold-frame {
+    border: 1.5px solid rgba(212, 175, 103, 0.75);
+    box-shadow: 0 0 15px rgba(212, 175, 103, 0.25);
   }
 
-  .envelope-shadow {
-    box-shadow: 0 25px 50px -12px rgba(45, 50, 26, 0.35), 0 0 0 1px rgba(197, 164, 109, 0.2);
+  /* Metallic Gold Button with Shimmer Hover */
+  .gold-shimmer-btn {
+    background: linear-gradient(135deg, #E5C07B 0%, #F5D78E 35%, #D4AF67 70%, #A77B35 100%);
+    color: #220005;
+    font-weight: 700;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .gold-shimmer-btn:hover {
+    box-shadow: 0 0 35px rgba(245, 215, 142, 0.65), 0 0 12px rgba(212, 175, 103, 0.9);
+    transform: translateY(-2px);
   }
 }
 
-/* Glassmorphism for wedding theme */
-.glass-panel {
-  background: rgba(253, 252, 248, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(197, 164, 109, 0.3);
+/* Glassmorphic Burgundy Panels */
+.glass-burgundy {
+  background: linear-gradient(160deg, rgba(67, 0, 13, 0.85) 0%, rgba(34, 0, 6, 0.92) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(212, 175, 103, 0.45);
 }
 
-.glass-panel-olive {
-  background: rgba(115, 123, 75, 0.06);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(115, 123, 75, 0.18);
+.glass-maroon {
+  background: linear-gradient(160deg, rgba(43, 0, 8, 0.9) 0%, rgba(24, 0, 4, 0.96) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 103, 0.5);
 }
