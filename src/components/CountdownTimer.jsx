@@ -48,7 +48,7 @@ export const CountdownTimer = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-burgundy-900 luxury-fabric-texture relative overflow-hidden border-t border-b border-gold-500/30">
+    <section className="py-20 px-4 bg-transparent relative overflow-hidden">
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -56,7 +56,7 @@ export const CountdownTimer = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-burgundy-800/80 text-gold-300 border border-gold-400/40 text-xs font-invitation-serif uppercase tracking-[0.25em] mb-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-burgundy-950/80 text-gold-300 border border-gold-400/30 text-xs font-invitation-serif uppercase tracking-[0.25em] mb-3">
             <Sparkles className="w-3.5 h-3.5 text-gold-400" />
             Until We Say "Qubool Hai"
           </div>
@@ -70,7 +70,7 @@ export const CountdownTimer = () => {
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="p-8 rounded-3xl bg-burgundy-800 border-2 border-gold-400 max-w-lg mx-auto my-8 shadow-2xl"
+            className="p-8 rounded-3xl bg-burgundy-950/80 backdrop-blur-md border border-gold-400/30 max-w-lg mx-auto my-8 shadow-2xl"
           >
             <InterlockedGoldenRings className="mx-auto mb-4" />
             <h3 className="font-invitation-serif text-2xl text-gold-light font-bold mb-2">
@@ -90,7 +90,7 @@ export const CountdownTimer = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-burgundy-800 to-burgundy-950 border border-gold-400/50 shadow-gold-glow flex flex-col items-center justify-center group hover:border-gold-300 transition-all duration-300"
+                className="relative p-5 sm:p-6 rounded-2xl bg-burgundy-950/80 backdrop-blur-md border border-gold-400/30 shadow-gold-glow flex flex-col items-center justify-center group hover:border-gold-300 transition-all duration-300"
               >
                 {/* Corner delicate golden dots */}
                 <div className="absolute top-2 left-2 w-1.5 h-1.5 rounded-full bg-gold-400/60"></div>

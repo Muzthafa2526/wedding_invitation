@@ -51,7 +51,7 @@ export const GallerySection = () => {
   }, [activeLightboxIndex, filteredImages.length]);
 
   return (
-    <section id="gallery" className="py-24 px-4 bg-burgundy-950 luxury-fabric-texture relative overflow-hidden">
+    <section id="gallery" className="py-24 px-4 bg-transparent relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12">
           <span className="font-invitation-serif text-xs md:text-sm uppercase tracking-[0.35em] text-gold-400 font-semibold">

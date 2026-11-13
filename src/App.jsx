@@ -33,7 +33,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-burgundy-900 text-gold-100 font-sans selection:bg-gold-500 selection:text-burgundy-950 relative">
+    <div className="min-h-screen luxury-fabric-texture text-gold-100 font-serif italic selection:bg-gold-500 selection:text-burgundy-950 relative">
       {/* Subtle Ethereal Gold Dust Particles Effect */}
       <GoldParticles />
 

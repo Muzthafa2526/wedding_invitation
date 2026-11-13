@@ -16,9 +16,9 @@ export const QuotesSection = () => {
   }, [quotes.length]);
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-burgundy-950 via-burgundy-900 to-burgundy-950 luxury-fabric-texture relative overflow-hidden border-t border-b border-gold-400/30">
+    <section className="py-20 px-4 bg-transparent relative overflow-hidden">
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <div className="w-12 h-12 rounded-full bg-burgundy-900 border border-gold-400/80 mx-auto flex items-center justify-center text-gold-300 shadow-gold-glow mb-6">
+        <div className="w-12 h-12 rounded-full bg-burgundy-950/80 border border-gold-400/50 mx-auto flex items-center justify-center text-gold-300 shadow-gold-glow mb-6">
           <Quote className="w-5 h-5 rotate-180 text-gold-400" />
         </div>
 

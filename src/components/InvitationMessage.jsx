@@ -15,7 +15,7 @@ export const InvitationMessage = () => {
   return (
     <section
       id="invitation-message"
-      className="pt-28 pb-20 sm:pt-36 sm:pb-24 px-4 bg-burgundy-950/80 luxury-fabric-texture relative overflow-hidden"
+      className="pt-28 pb-20 sm:pt-36 sm:pb-24 px-4 bg-transparent relative overflow-hidden"
     >
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-12">
@@ -37,11 +37,8 @@ export const InvitationMessage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.9 }}
-          className="relative bg-gradient-to-b from-burgundy-900 via-burgundy-950 to-burgundy-950 rounded-3xl p-6 sm:p-12 md:p-14 border-gold-card text-center max-w-2xl mx-auto overflow-hidden shadow-2xl"
+          className="relative bg-burgundy-950/85 backdrop-blur-md rounded-3xl p-6 sm:p-12 md:p-14 text-center max-w-2xl mx-auto overflow-hidden shadow-[0_25px_80px_rgba(0,0,0,0.95),0_0_50px_rgba(212,175,103,0.25)] border border-gold-400/30"
         >
-          {/* Thin Metallic Gold Inner Frame */}
-          <div className="absolute inset-3 sm:inset-5 pointer-events-none border border-gold-400/60 rounded-2xl"></div>
-          <div className="absolute inset-4 sm:inset-6 pointer-events-none border border-gold-300/30 rounded-xl"></div>
 
           {/* Corner Floral Ornaments */}
           <div className="absolute top-4 left-4 pointer-events-none opacity-80">
@@ -98,19 +95,17 @@ export const InvitationMessage = () => {
           </p>
 
           {/* 6. Framed Date Block */}
-          <div className="my-6 py-4 border-t border-b border-gold-400/50 max-w-sm mx-auto">
+          <div className="my-6 py-4 bg-burgundy-950/60 rounded-2xl max-w-sm mx-auto">
             <div className="text-[11px] font-invitation-serif uppercase tracking-[0.3em] text-gold-400 mb-1">
               {invitation.dayOfWeek},
             </div>
-            <div className="flex items-center justify-center gap-3 sm:gap-5 text-gold-light">
+            <div className="flex items-center justify-center gap-4 sm:gap-6 text-gold-light">
               <span className="font-invitation-serif text-xs sm:text-sm tracking-[0.25em] font-semibold">
                 {invitation.monthName}
               </span>
-              <div className="h-7 w-[1px] bg-gold-400/60"></div>
               <span className="font-serif text-3xl sm:text-4xl font-bold italic text-gold-gradient">
                 {invitation.dayNumber}
               </span>
-              <div className="h-7 w-[1px] bg-gold-400/60"></div>
               <span className="font-invitation-serif text-xs sm:text-sm tracking-[0.25em] font-semibold">
                 {invitation.yearNumber}
               </span>

@@ -18,7 +18,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-gradient-to-b from-burgundy-900 to-burgundy-950 luxury-fabric-texture pt-20 pb-12 px-4 border-t border-gold-400/40 text-center overflow-hidden">
+    <footer className="relative bg-transparent pt-20 pb-12 px-4 text-center overflow-hidden">
       {/* Decorative Blossoms */}
       <div className="absolute -bottom-6 -left-6 opacity-30 pointer-events-none hidden sm:block">
         <GoldenFloralBlossom className="w-36 h-36 text-gold-400" />
@@ -62,7 +62,7 @@ export const Footer = () => {
           <button
             onClick={scrollToTop}
             aria-label="Back to top"
-            className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-burgundy-900 hover:bg-burgundy-800 border border-gold-400/60 text-gold-200 font-invitation-serif text-xs uppercase tracking-widest shadow-gold-glow transition-all hover:-translate-y-1 cursor-pointer"
+            className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-burgundy-950/80 hover:bg-burgundy-900 border border-gold-400/40 text-gold-200 font-invitation-serif text-xs uppercase tracking-widest shadow-gold-glow transition-all hover:-translate-y-1 cursor-pointer"
           >
             <span>Back To Top</span>
             <ArrowUp className="w-4 h-4 text-gold-400 group-hover:-translate-y-0.5 transition-transform" />

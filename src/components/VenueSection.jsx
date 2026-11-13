@@ -13,7 +13,7 @@ export const VenueSection = () => {
   )}`;
 
   return (
-    <section id="venue" className="py-24 px-4 bg-burgundy-900 luxury-fabric-texture relative overflow-hidden">
+    <section id="venue" className="py-24 px-4 bg-transparent relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <span className="font-invitation-serif text-xs md:text-sm uppercase tracking-[0.35em] text-gold-400 font-semibold">
@@ -36,7 +36,7 @@ export const VenueSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-7 bg-gradient-to-b from-burgundy-800 to-burgundy-950 p-6 sm:p-8 rounded-3xl border border-gold-400/50 shadow-gold-glow"
+            className="lg:col-span-7 bg-burgundy-950/85 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-gold-400/30 shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_25px_rgba(212,175,103,0.15)]"
           >
             {/* Featured Image */}
             <div className="relative aspect-video rounded-2xl overflow-hidden border-2 border-gold-400/60 shadow-xl mb-4">
@@ -101,7 +101,7 @@ export const VenueSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-5 bg-gradient-to-b from-burgundy-800 to-burgundy-950 p-6 sm:p-8 rounded-3xl border border-gold-400/50 shadow-gold-glow flex flex-col justify-between h-full"
+            className="lg:col-span-5 bg-burgundy-950/85 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-gold-400/30 shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_25px_rgba(212,175,103,0.15)] flex flex-col justify-between h-full"
           >
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-burgundy-900 border border-gold-400/50 text-gold-300 font-invitation-serif text-[11px] font-semibold uppercase tracking-wider mb-4">
