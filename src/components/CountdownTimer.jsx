@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { weddingData } from '../data/weddingData';
 import { GoldenDiamondDivider, InterlockedGoldenRings } from './FloralDecorations';
-import { Clock, Sparkles } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 export const CountdownTimer = () => {
   const { weddingDateISO } = weddingData.invitation;
@@ -56,11 +56,11 @@ export const CountdownTimer = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-burgundy-800/80 text-gold-300 border border-gold-400/40 text-xs font-serif uppercase tracking-[0.25em] mb-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-burgundy-800/80 text-gold-300 border border-gold-400/40 text-xs font-invitation-serif uppercase tracking-[0.25em] mb-3">
             <Sparkles className="w-3.5 h-3.5 text-gold-400" />
             Until We Say "Qubool Hai"
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-gold-light">
+          <h2 className="font-invitation-serif text-2xl sm:text-3xl md:text-4xl text-gold-light mt-1">
             Counting Down The Auspicious Moments
           </h2>
           <GoldenDiamondDivider className="mx-auto" />
@@ -73,10 +73,10 @@ export const CountdownTimer = () => {
             className="p-8 rounded-3xl bg-burgundy-800 border-2 border-gold-400 max-w-lg mx-auto my-8 shadow-2xl"
           >
             <InterlockedGoldenRings className="mx-auto mb-4" />
-            <h3 className="font-serif text-3xl text-gold-light font-bold mb-2">
+            <h3 className="font-invitation-serif text-2xl text-gold-light font-bold mb-2">
               Today Is The Day!
             </h3>
-            <p className="font-serif text-gold-200">
+            <p className="font-invitation-body text-gold-200">
               The wedding celebration of Samju M.C &amp; Fahiza K.K is taking place right now!
             </p>
           </motion.div>
@@ -90,7 +90,7 @@ export const CountdownTimer = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative p-5 sm:p-7 rounded-2xl bg-gradient-to-b from-burgundy-800 to-burgundy-950 border border-gold-400/50 shadow-gold-glow flex flex-col items-center justify-center group hover:border-gold-300 transition-all duration-300"
+                className="relative p-5 sm:p-6 rounded-2xl bg-gradient-to-b from-burgundy-800 to-burgundy-950 border border-gold-400/50 shadow-gold-glow flex flex-col items-center justify-center group hover:border-gold-300 transition-all duration-300"
               >
                 {/* Corner delicate golden dots */}
                 <div className="absolute top-2 left-2 w-1.5 h-1.5 rounded-full bg-gold-400/60"></div>
@@ -99,12 +99,12 @@ export const CountdownTimer = () => {
                 <div className="absolute bottom-2 right-2 w-1.5 h-1.5 rounded-full bg-gold-400/60"></div>
 
                 {/* Number in Metallic Gold */}
-                <span className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold text-gold-gradient group-hover:scale-105 transition-transform tabular-nums drop-shadow-[0_2px_8px_rgba(212,175,103,0.3)]">
+                <span className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-gold-gradient group-hover:scale-105 transition-transform tabular-nums drop-shadow-[0_2px_8px_rgba(212,175,103,0.3)]">
                   {String(unit.value).padStart(2, '0')}
                 </span>
 
                 {/* Unit Label */}
-                <span className="font-serif text-[11px] sm:text-xs uppercase tracking-[0.28em] text-gold-300 mt-2 font-medium">
+                <span className="font-invitation-serif text-[10px] sm:text-xs uppercase tracking-[0.25em] text-gold-300 mt-2 font-medium">
                   {unit.label}
                 </span>
               </motion.div>
@@ -112,7 +112,7 @@ export const CountdownTimer = () => {
           </div>
         )}
 
-        <p className="font-serif italic text-gold-300/80 text-xs sm:text-sm mt-8">
+        <p className="font-invitation-serif italic text-gold-300/80 text-xs sm:text-sm mt-8">
           January 17, 2027 • Nalanda Convention Centre, Calicut
         </p>
       </div>

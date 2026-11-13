@@ -18,10 +18,10 @@ export const LoveStory = () => {
     <section id="story" className="py-24 px-4 bg-burgundy-900 luxury-fabric-texture relative overflow-hidden">
       <div className="max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <span className="font-serif text-xs md:text-sm uppercase tracking-[0.35em] text-gold-400 font-semibold">
+          <span className="font-invitation-serif text-xs md:text-sm uppercase tracking-[0.35em] text-gold-400 font-semibold">
             Our Journey of Love
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-gold-light mt-1">
+          <h2 className="font-invitation-serif text-2xl sm:text-3xl md:text-4xl text-gold-light mt-1.5">
             How Forever Began
           </h2>
           <GoldenDiamondDivider className="mx-auto" />
@@ -50,22 +50,22 @@ export const LoveStory = () => {
                 >
                   {/* Content Card */}
                   <div className="w-full md:w-1/2 md:px-8">
-                    <div className="bg-gradient-to-b from-burgundy-800 to-burgundy-950 p-6 sm:p-8 rounded-2xl border border-gold-400/50 shadow-gold-glow hover:border-gold-300 transition-all duration-300 group">
+                    <div className="bg-gradient-to-b from-burgundy-800 to-burgundy-950 p-6 sm:p-7 rounded-2xl border border-gold-400/50 shadow-gold-glow hover:border-gold-300 transition-all duration-300 group">
                       <div className="flex items-center justify-between mb-3">
-                        <span className="inline-block px-3.5 py-1 rounded-full bg-burgundy-900 border border-gold-400/60 text-gold-300 font-serif text-xs font-semibold uppercase tracking-wider">
+                        <span className="inline-block px-3 py-1 rounded-full bg-burgundy-900 border border-gold-400/60 text-gold-300 font-invitation-serif text-[11px] font-semibold uppercase tracking-wider">
                           {chapter.year}
                         </span>
-                        <span className="flex items-center gap-1 text-xs text-gold-400 font-serif">
+                        <span className="flex items-center gap-1 text-xs text-gold-400 font-invitation-serif">
                           <MapPin className="w-3.5 h-3.5" />
                           {chapter.location}
                         </span>
                       </div>
 
-                      <h3 className="font-serif text-xl sm:text-2xl text-gold-light font-semibold mb-2 group-hover:text-gold-gradient transition-colors">
+                      <h3 className="font-invitation-serif text-lg sm:text-xl text-gold-light font-semibold mb-2 group-hover:text-gold-gradient transition-colors">
                         {chapter.title}
                       </h3>
 
-                      <p className="font-serif text-sm text-gold-100/90 leading-relaxed">
+                      <p className="font-invitation-body text-sm sm:text-base text-gold-100/90 leading-relaxed">
                         {chapter.description}
                       </p>
                     </div>

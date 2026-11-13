@@ -7,81 +7,42 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: {
-          50: '#FDFCF8',
-          100: '#FAF7F0',
-          200: '#F8F4E9', // Primary Background
-          300: '#F0E8D5',
-          400: '#E5D9BE',
-          500: '#D8C6A0',
-        },
-        olive: {
-          50: '#F6F7F2',
-          100: '#EAECE0',
-          200: '#D2D8BE',
-          300: '#B4BF97',
-          400: '#94A273',
-          500: '#737B4B', // Secondary Color
-          600: '#5C633A',
-          700: '#454B2A',
-          800: '#32371E',
-          900: '#212513',
+        burgundy: {
+          950: '#180004',
+          900: '#2B0008', // Dark Maroon
+          800: '#43000D', // Deep Burgundy
+          700: '#590014', // Rich Wine Red
+          600: '#75001C',
+          500: '#920526',
         },
         gold: {
-          50: '#FCF9F2',
-          100: '#F8F1E2',
-          200: '#EFE0C2',
-          300: '#E4CD9F',
-          400: '#D5B87E',
-          500: '#C5A46D', // Accent Color
-          600: '#B28E51',
-          700: '#8D6E37',
-          800: '#684F25',
-          900: '#463417',
+          100: '#FFF4DF', // Soft Ivory
+          200: '#FBE8C4',
+          300: '#F1D99A', // Champagne Gold
+          400: '#E4C381',
+          500: '#D4AF67', // Metallic Gold
+          600: '#BA9248',
+          700: '#A77B35', // Dark Gold
+          800: '#875F22',
+          900: '#5F4114',
         },
       },
       fontFamily: {
+        calligraphy: ['"Pinyon Script"', '"Alex Brush"', '"Great Vibes"', 'cursive'],
+        script: ['"Pinyon Script"', '"Alex Brush"', '"Great Vibes"', 'cursive'],
+        cinzel: ['"Cinzel"', '"Cinzel Decorative"', 'serif'],
         serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
-        cinzel: ['"Cinzel"', 'serif'],
-        script: ['"Great Vibes"', 'cursive'],
         sans: ['"Montserrat"', 'sans-serif'],
       },
       backgroundImage: {
-        'gold-shimmer': 'linear-gradient(135deg, #C5A46D 0%, #F4EBDA 50%, #A6844D 100%)',
-        'olive-gradient': 'linear-gradient(135deg, #737B4B 0%, #454B2A 100%)',
+        'gold-gradient': 'linear-gradient(135deg, #F1D99A 0%, #D4AF67 50%, #A77B35 100%)',
+        'gold-shimmer': 'linear-gradient(90deg, #D4AF67 0%, #FFF4DF 50%, #D4AF67 100%)',
+        'burgundy-gradient': 'radial-gradient(ellipse at center, #590014 0%, #43000D 50%, #2B0008 100%)',
       },
       boxShadow: {
-        'luxury': '0 20px 50px -10px rgba(115, 123, 75, 0.15)',
-        'luxury-hover': '0 25px 60px -10px rgba(115, 123, 75, 0.25)',
-        'gold-glow': '0 0 25px rgba(197, 164, 109, 0.35)',
-        'wax-seal': '0 8px 20px rgba(115, 123, 75, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.3)',
-      },
-      animation: {
-        'float-slow': 'float 8s ease-in-out infinite',
-        'float-reverse': 'floatReverse 9s ease-in-out infinite',
-        'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',
-        'petal-fall': 'petalFall 12s linear infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-          '50%': { transform: 'translateY(-12px) rotate(3deg)' },
-        },
-        floatReverse: {
-          '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
-          '50%': { transform: 'translateY(12px) rotate(-3deg)' },
-        },
-        pulseSubtle: {
-          '0%, 100%': { opacity: '1', transform: 'scale(1)' },
-          '50%': { opacity: '0.88', transform: 'scale(1.02)' },
-        },
-        petalFall: {
-          '0%': { transform: 'translateY(-10%) rotate(0deg) translateX(0)', opacity: '0' },
-          '10%': { opacity: '0.8' },
-          '90%': { opacity: '0.8' },
-          '100%': { transform: 'translateY(110vh) rotate(360deg) translateX(50px)', opacity: '0' },
-        },
+        'gold-glow': '0 0 25px rgba(212, 175, 103, 0.45)',
+        'gold-glow-lg': '0 0 45px rgba(212, 175, 103, 0.65)',
+        'burgundy-shadow': '0 25px 60px -15px rgba(43, 0, 8, 0.9)',
       },
     },
   },

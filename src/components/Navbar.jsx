@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Heart } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { weddingData } from '../data/weddingData';
 
 export const Navbar = () => {
@@ -37,7 +37,7 @@ export const Navbar = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
         scrolled
-          ? 'bg-burgundy-950/90 backdrop-blur-md shadow-2xl py-3 border-b border-gold-400/30'
+          ? 'bg-burgundy-950/95 backdrop-blur-md shadow-2xl py-3 border-b border-gold-400/30'
           : 'bg-transparent py-5'
       }`}
     >
@@ -48,10 +48,10 @@ export const Navbar = () => {
           onClick={(e) => handleNavClick(e, '#wedding-hero')}
           className="flex items-center gap-2 group text-decoration-none"
         >
-          <span className="font-calligraphy text-3xl font-normal text-gold-light group-hover:text-gold-200 transition-colors drop-shadow-[0_1px_4px_rgba(212,175,103,0.3)]">
-            {couple.groom.firstName} <span className="text-xl text-gold-400">&amp;</span> {couple.bride.firstName}
+          <span className="font-invitation-script text-2xl sm:text-3xl font-normal text-gold-light group-hover:text-gold-200 transition-colors drop-shadow-[0_1px_4px_rgba(212,175,103,0.3)]">
+            {couple.groom.firstName} <span className="text-lg text-gold-400 font-serif">&amp;</span> {couple.bride.firstName}
           </span>
-          <span className="hidden md:inline-block text-[11px] uppercase tracking-widest text-gold-400 border-l border-gold-500/40 pl-3">
+          <span className="hidden md:inline-block font-invitation-serif text-[10px] uppercase tracking-widest text-gold-400 border-l border-gold-500/40 pl-3">
             {invitation.dateFormatted}
           </span>
         </a>
@@ -63,7 +63,7 @@ export const Navbar = () => {
               key={link.name}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="font-serif text-xs uppercase tracking-[0.25em] text-gold-200 hover:text-gold-light transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 hover:after:w-full after:h-[1px] after:bg-gold-400 after:transition-all after:duration-300"
+              className="font-invitation-serif text-xs uppercase tracking-[0.22em] text-gold-200 hover:text-gold-light transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 hover:after:w-full after:h-[1px] after:bg-gold-400 after:transition-all after:duration-300"
             >
               {link.name}
             </a>
@@ -91,7 +91,7 @@ export const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="font-serif text-sm tracking-[0.25em] uppercase py-2 text-gold-200 hover:text-gold-light border-b border-gold-400/10"
+                className="font-invitation-serif text-xs tracking-[0.25em] uppercase py-2 text-gold-200 hover:text-gold-light border-b border-gold-400/10"
               >
                 {link.name}
               </a>

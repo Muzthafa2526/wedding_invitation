@@ -31,13 +31,13 @@ export const Footer = () => {
         {/* Top Blessing Badge */}
         <div className="mb-8">
           <InterlockedGoldenRings className="mx-auto mb-4" />
-          <span className="font-serif text-xs uppercase tracking-[0.35em] text-gold-400 font-semibold">
+          <span className="font-invitation-serif text-xs uppercase tracking-[0.35em] text-gold-400 font-semibold">
             Forever Begins Here
           </span>
-          <h2 className="font-calligraphy text-4xl sm:text-6xl text-gold-light font-normal mt-2 mb-3">
-            {couple.groom.shortName} <span className="font-serif text-3xl sm:text-4xl text-gold-300 font-light">&amp;</span> {couple.bride.shortName}
+          <h2 className="font-invitation-script text-3xl sm:text-4xl md:text-5xl text-gold-light font-normal mt-2 mb-3">
+            {couple.groom.shortName} <span className="font-serif text-2xl sm:text-3xl text-gold-300 font-light">&amp;</span> {couple.bride.shortName}
           </h2>
-          <p className="font-serif text-xs uppercase tracking-[0.25em] text-gold-300">
+          <p className="font-invitation-serif text-xs uppercase tracking-[0.25em] text-gold-300">
             {invitation.dateFull} • {venue.name}
           </p>
         </div>
@@ -46,13 +46,13 @@ export const Footer = () => {
 
         {/* Gratitude Message */}
         <div className="my-8 max-w-xl mx-auto">
-          <h3 className="font-serif text-2xl sm:text-3xl text-gold-light font-semibold mb-3">
+          <h3 className="font-invitation-serif text-xl sm:text-2xl text-gold-light font-semibold mb-3">
             Thank You For Being Part Of Our Special Day
           </h3>
-          <p className="font-serif italic text-gold-200/90 text-sm leading-relaxed">
+          <p className="font-invitation-body italic text-gold-200/90 text-base leading-relaxed">
             "Your heartfelt presence, warm blessings, and prayers are the greatest gift as we begin this sacred journey of marriage together."
           </p>
-          <p className="font-serif text-xs text-gold-400 tracking-wider mt-4">
+          <p className="font-invitation-serif text-xs text-gold-400 tracking-wider mt-4">
             {couple.hashtag}
           </p>
         </div>
@@ -62,7 +62,7 @@ export const Footer = () => {
           <button
             onClick={scrollToTop}
             aria-label="Back to top"
-            className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-burgundy-900 hover:bg-burgundy-800 border border-gold-400/60 text-gold-200 font-serif text-xs uppercase tracking-widest shadow-gold-glow transition-all hover:-translate-y-1"
+            className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-burgundy-900 hover:bg-burgundy-800 border border-gold-400/60 text-gold-200 font-invitation-serif text-xs uppercase tracking-widest shadow-gold-glow transition-all hover:-translate-y-1 cursor-pointer"
           >
             <span>Back To Top</span>
             <ArrowUp className="w-4 h-4 text-gold-400 group-hover:-translate-y-0.5 transition-transform" />
@@ -70,7 +70,7 @@ export const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="pt-6 border-t border-gold-400/25 text-xs font-serif text-gold-400/70 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="pt-6 border-t border-gold-400/25 text-xs font-invitation-body text-gold-400/70 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p>
             &copy; 2027 {couple.groom.shortName} &amp; {couple.bride.shortName}. All rights reserved.
           </p>

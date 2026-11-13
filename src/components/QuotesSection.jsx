@@ -19,10 +19,10 @@ export const QuotesSection = () => {
     <section className="py-20 px-4 bg-gradient-to-b from-burgundy-950 via-burgundy-900 to-burgundy-950 luxury-fabric-texture relative overflow-hidden border-t border-b border-gold-400/30">
       <div className="max-w-4xl mx-auto text-center relative z-10">
         <div className="w-12 h-12 rounded-full bg-burgundy-900 border border-gold-400/80 mx-auto flex items-center justify-center text-gold-300 shadow-gold-glow mb-6">
-          <Quote className="w-6 h-6 rotate-180 text-gold-400" />
+          <Quote className="w-5 h-5 rotate-180 text-gold-400" />
         </div>
 
-        <div className="min-h-[160px] flex items-center justify-center">
+        <div className="min-h-[140px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -32,16 +32,16 @@ export const QuotesSection = () => {
               transition={{ duration: 0.6 }}
               className="px-4"
             >
-              <blockquote className="font-calligraphy text-3xl sm:text-4xl md:text-5xl text-gold-light leading-snug drop-shadow-[0_2px_12px_rgba(212,175,103,0.3)] max-w-3xl mx-auto">
+              <blockquote className="font-invitation-script text-2xl sm:text-3xl md:text-4xl text-gold-light leading-relaxed drop-shadow-[0_2px_12px_rgba(212,175,103,0.3)] max-w-2xl mx-auto">
                 "{quotes[currentIndex].quote}"
               </blockquote>
 
-              <div className="mt-6 flex flex-col items-center">
-                <span className="font-serif text-xs uppercase tracking-[0.3em] text-gold-300 font-semibold">
+              <div className="mt-5 flex flex-col items-center">
+                <span className="font-invitation-serif text-xs uppercase tracking-[0.28em] text-gold-300 font-semibold">
                   {quotes[currentIndex].author}
                 </span>
                 {quotes[currentIndex].work && (
-                  <span className="font-serif text-xs text-gold-400/90 italic mt-0.5">
+                  <span className="font-invitation-body text-xs text-gold-400/90 italic mt-0.5">
                     — {quotes[currentIndex].work}
                   </span>
                 )}
@@ -51,7 +51,7 @@ export const QuotesSection = () => {
         </div>
 
         {/* Indicators */}
-        <div className="flex items-center justify-center gap-2.5 mt-8">
+        <div className="flex items-center justify-center gap-2 mt-8">
           {quotes.map((_, idx) => (
             <button
               key={idx}

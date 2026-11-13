@@ -20,10 +20,10 @@ export const CoupleDetails = () => {
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="font-serif text-xs md:text-sm uppercase tracking-[0.35em] text-gold-400 font-semibold">
+          <span className="font-invitation-serif text-xs md:text-sm uppercase tracking-[0.35em] text-gold-400 font-semibold">
             Two Souls Blessed In Love
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-gold-light mt-1">
+          <h2 className="font-invitation-serif text-2xl sm:text-3xl md:text-4xl text-gold-light mt-1.5">
             The Groom &amp; The Bride
           </h2>
           <GoldenDiamondDivider className="mx-auto" />
@@ -45,7 +45,7 @@ export const CoupleDetails = () => {
             </div>
 
             {/* Groom Portrait */}
-            <div className="relative shrink-0 w-56 h-72 sm:w-60 sm:h-80 rounded-2xl overflow-hidden p-2 bg-burgundy-900 border-2 border-gold-400/70 shadow-2xl">
+            <div className="relative shrink-0 w-52 h-64 sm:w-56 sm:h-72 rounded-2xl overflow-hidden p-2 bg-burgundy-900 border-2 border-gold-400/70 shadow-2xl">
               <img
                 src={groom.image}
                 alt={groom.fullName}
@@ -57,23 +57,23 @@ export const CoupleDetails = () => {
 
             {/* Groom Details */}
             <div className="flex-1 text-center md:text-left">
-              <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-gold-400 font-serif font-bold mb-1">
+              <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-gold-400 font-invitation-serif font-bold mb-1">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>{groom.title}</span>
               </div>
-              <h3 className="font-calligraphy text-4xl sm:text-5xl text-gold-light font-normal leading-tight">
+              <h3 className="font-invitation-script text-3xl sm:text-4xl text-gold-light font-normal leading-tight">
                 {groom.fullName}
               </h3>
-              <p className="font-serif text-xs text-gold-300/90 uppercase tracking-wider mt-1 mb-4">
+              <p className="font-invitation-serif text-[11px] sm:text-xs text-gold-300/90 uppercase tracking-wider mt-1 mb-4">
                 {groom.parents}
               </p>
 
-              <p className="font-serif text-sm text-gold-100/90 leading-relaxed mb-4">
+              <p className="font-invitation-body text-sm sm:text-base text-gold-100/90 leading-relaxed mb-4">
                 {groom.bio}
               </p>
 
               {/* Romantic Quote */}
-              <blockquote className="border-l-2 border-gold-400/80 pl-3 italic font-serif text-xs sm:text-sm text-gold-200 my-4">
+              <blockquote className="border-l-2 border-gold-400/80 pl-3 italic font-invitation-body text-sm text-gold-200 my-4">
                 "{groom.quote}"
               </blockquote>
             </div>
@@ -93,7 +93,7 @@ export const CoupleDetails = () => {
             </div>
 
             {/* Bride Portrait */}
-            <div className="relative shrink-0 w-56 h-72 sm:w-60 sm:h-80 rounded-2xl overflow-hidden p-2 bg-burgundy-900 border-2 border-gold-400/70 shadow-2xl">
+            <div className="relative shrink-0 w-52 h-64 sm:w-56 sm:h-72 rounded-2xl overflow-hidden p-2 bg-burgundy-900 border-2 border-gold-400/70 shadow-2xl">
               <img
                 src={bride.image}
                 alt={bride.fullName}
@@ -105,23 +105,23 @@ export const CoupleDetails = () => {
 
             {/* Bride Details */}
             <div className="flex-1 text-center md:text-left">
-              <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-gold-400 font-serif font-bold mb-1">
+              <div className="inline-flex items-center gap-1.5 text-xs uppercase tracking-widest text-gold-400 font-invitation-serif font-bold mb-1">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>{bride.title}</span>
               </div>
-              <h3 className="font-calligraphy text-4xl sm:text-5xl text-gold-light font-normal leading-tight">
+              <h3 className="font-invitation-script text-3xl sm:text-4xl text-gold-light font-normal leading-tight">
                 {bride.fullName}
               </h3>
-              <p className="font-serif text-xs text-gold-300/90 uppercase tracking-wider mt-1 mb-4">
+              <p className="font-invitation-serif text-[11px] sm:text-xs text-gold-300/90 uppercase tracking-wider mt-1 mb-4">
                 {bride.parents}
               </p>
 
-              <p className="font-serif text-sm text-gold-100/90 leading-relaxed mb-4">
+              <p className="font-invitation-body text-sm sm:text-base text-gold-100/90 leading-relaxed mb-4">
                 {bride.bio}
               </p>
 
               {/* Romantic Quote */}
-              <blockquote className="border-l-2 border-gold-400/80 pl-3 italic font-serif text-xs sm:text-sm text-gold-200 my-4">
+              <blockquote className="border-l-2 border-gold-400/80 pl-3 italic font-invitation-body text-sm text-gold-200 my-4">
                 "{bride.quote}"
               </blockquote>
             </div>
@@ -130,7 +130,7 @@ export const CoupleDetails = () => {
 
         {/* Center Intertwined Love Monogram */}
         <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-4 px-6 py-2.5 rounded-full bg-burgundy-900 border border-gold-400/60 text-gold-200 text-xs uppercase tracking-[0.25em] font-serif shadow-md">
+          <div className="inline-flex items-center gap-4 px-6 py-2.5 rounded-full bg-burgundy-900 border border-gold-400/60 text-gold-200 text-xs uppercase tracking-[0.25em] font-invitation-serif shadow-md">
             <Heart className="w-4 h-4 text-gold-400 fill-gold-400" />
             <span>United by Faith, Bound by Devotion</span>
             <Heart className="w-4 h-4 text-gold-400 fill-gold-400" />

@@ -9,13 +9,14 @@
   }
 
   body {
-    background-color: #220005;
+    background-color: #1F0005;
     color: #FFF4DF;
     overflow-x: hidden;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    letter-spacing: 0.02em;
   }
 
-  /* Exact Deep Burgundy Marble / Velvet Cloud Smoky Texture from Reference Image */
+  /* Deep Burgundy Marble / Velvet Cloud Smoky Texture */
   .luxury-fabric-texture {
     background-color: #1F0005;
     background-image: 
@@ -44,6 +45,23 @@
 }
 
 @layer utilities {
+  /* Exact Calligraphy Script from Reference Card */
+  .font-invitation-script {
+    font-family: 'Pinyon Script', 'Alex Brush', 'Great Vibes', cursive !important;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Regal Roman / Serif Typography for Badges & Headlines */
+  .font-invitation-serif {
+    font-family: 'Cinzel', 'Cormorant Garamond', 'Georgia', serif !important;
+    letter-spacing: 0.22em;
+  }
+
+  .font-invitation-body {
+    font-family: 'Cormorant Garamond', 'Georgia', serif !important;
+  }
+
   /* Metallic Gold Text Gradients */
   .text-gold-gradient {
     background: linear-gradient(135deg, #FFFFFF 0%, #FFF4DF 20%, #F1D99A 45%, #D4AF67 75%, #A77B35 100%);
@@ -57,7 +75,7 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Exact Card Border from Reference: Thin Metallic Gold Frame with soft ambient shadow */
+  /* Thin Metallic Gold Frame with soft ambient shadow */
   .border-gold-card {
     border: 1px solid rgba(212, 175, 103, 0.65);
     box-shadow: 
@@ -66,12 +84,7 @@
       inset 0 0 15px rgba(89, 0, 20, 0.5);
   }
 
-  .border-gold-frame {
-    border: 1.5px solid rgba(212, 175, 103, 0.75);
-    box-shadow: 0 0 15px rgba(212, 175, 103, 0.25);
-  }
-
-  /* Metallic Gold Button with Shimmer Hover */
+  /* Metallic Gold Button with Shimmer */
   .gold-shimmer-btn {
     background: linear-gradient(135deg, #E5C07B 0%, #F5D78E 35%, #D4AF67 70%, #A77B35 100%);
     color: #220005;
@@ -82,19 +95,4 @@
     box-shadow: 0 0 35px rgba(245, 215, 142, 0.65), 0 0 12px rgba(212, 175, 103, 0.9);
     transform: translateY(-2px);
   }
-}
-
-/* Glassmorphic Burgundy Panels */
-.glass-burgundy {
-  background: linear-gradient(160deg, rgba(67, 0, 13, 0.85) 0%, rgba(34, 0, 6, 0.92) 100%);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(212, 175, 103, 0.45);
-}
-
-.glass-maroon {
-  background: linear-gradient(160deg, rgba(43, 0, 8, 0.9) 0%, rgba(24, 0, 4, 0.96) 100%);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(212, 175, 103, 0.5);
 }

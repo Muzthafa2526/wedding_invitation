@@ -54,14 +54,14 @@ export const GallerySection = () => {
     <section id="gallery" className="py-24 px-4 bg-burgundy-950 luxury-fabric-texture relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12">
-          <span className="font-serif text-xs md:text-sm uppercase tracking-[0.35em] text-gold-400 font-semibold">
+          <span className="font-invitation-serif text-xs md:text-sm uppercase tracking-[0.35em] text-gold-400 font-semibold">
             Visual Anthology
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-gold-light mt-1">
+          <h2 className="font-invitation-serif text-2xl sm:text-3xl md:text-4xl text-gold-light mt-1.5">
             Wedding Moments &amp; Memories
           </h2>
           <GoldenDiamondDivider className="mx-auto" />
-          <p className="font-serif italic text-gold-200/90 text-sm max-w-lg mx-auto mt-2">
+          <p className="font-invitation-body italic text-gold-200/90 text-base max-w-lg mx-auto mt-2">
             Cherished glimpses of devotion, smiles, and the journey leading to our sacred day.
           </p>
         </div>
@@ -72,7 +72,7 @@ export const GallerySection = () => {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2 rounded-full font-serif text-xs uppercase tracking-widest transition-all duration-300 ${
+              className={`px-5 py-2 rounded-full font-invitation-serif text-xs uppercase tracking-widest transition-all duration-300 cursor-pointer ${
                 selectedCategory === cat
                   ? 'gold-shimmer-btn font-bold shadow-md'
                   : 'bg-burgundy-900 text-gold-300 hover:bg-burgundy-800 border border-gold-400/40'
@@ -101,7 +101,7 @@ export const GallerySection = () => {
                   className={`group relative rounded-3xl overflow-hidden cursor-pointer bg-burgundy-900 border border-gold-400/50 shadow-gold-glow hover:border-gold-300 hover:shadow-gold-glow-lg transition-all duration-500 ${
                     isTall ? 'sm:row-span-2' : ''
                   }`}
-                  style={{ minHeight: isTall ? '420px' : '260px' }}
+                  style={{ minHeight: isTall ? '400px' : '260px' }}
                 >
                   {/* Photo */}
                   <img
@@ -114,14 +114,14 @@ export const GallerySection = () => {
                   {/* Dark Burgundy & Gold Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-burgundy-950 via-burgundy-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                     <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-burgundy-900/80 border border-gold-400/60 text-gold-300 text-xs font-serif uppercase tracking-widest mb-2">
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-burgundy-900/80 border border-gold-400/60 text-gold-300 text-[10px] font-invitation-serif uppercase tracking-widest mb-2">
                         <Camera className="w-3 h-3 text-gold-400" />
                         <span>{item.category}</span>
                       </div>
-                      <h4 className="font-serif text-xl text-gold-light font-semibold mb-1">
+                      <h4 className="font-invitation-serif text-lg text-gold-light font-semibold mb-1">
                         {item.title}
                       </h4>
-                      <p className="font-serif text-xs text-gold-200/90 italic">
+                      <p className="font-invitation-body text-xs text-gold-200/90 italic">
                         {item.caption}
                       </p>
                     </div>
@@ -151,7 +151,7 @@ export const GallerySection = () => {
             {/* Close Button */}
             <button
               onClick={closeLightbox}
-              className="absolute top-6 right-6 p-2 rounded-full bg-burgundy-900/80 border border-gold-400 text-gold-200 hover:text-white transition-colors z-50"
+              className="absolute top-6 right-6 p-2 rounded-full bg-burgundy-900/80 border border-gold-400 text-gold-200 hover:text-white transition-colors z-50 cursor-pointer"
               aria-label="Close modal"
             >
               <X className="w-6 h-6" />
@@ -163,7 +163,7 @@ export const GallerySection = () => {
                 e.stopPropagation();
                 showPrev();
               }}
-              className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-burgundy-900/80 border border-gold-400 text-gold-200 hover:text-white transition-colors z-50"
+              className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-burgundy-900/80 border border-gold-400 text-gold-200 hover:text-white transition-colors z-50 cursor-pointer"
               aria-label="Previous image"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -175,7 +175,7 @@ export const GallerySection = () => {
                 e.stopPropagation();
                 showNext();
               }}
-              className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-burgundy-900/80 border border-gold-400 text-gold-200 hover:text-white transition-colors z-50"
+              className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-burgundy-900/80 border border-gold-400 text-gold-200 hover:text-white transition-colors z-50 cursor-pointer"
               aria-label="Next image"
             >
               <ChevronRight className="w-6 h-6" />
@@ -198,14 +198,14 @@ export const GallerySection = () => {
               />
 
               {/* Caption */}
-              <div className="mt-4 text-center font-serif text-gold-100">
-                <span className="text-xs uppercase tracking-widest text-gold-400">
+              <div className="mt-4 text-center text-gold-100">
+                <span className="font-invitation-serif text-xs uppercase tracking-widest text-gold-400">
                   {activeLightboxIndex + 1} / {filteredImages.length} • {filteredImages[activeLightboxIndex].category}
                 </span>
-                <h3 className="text-xl font-semibold mt-1 text-gold-light">
+                <h3 className="font-invitation-serif text-lg font-semibold mt-1 text-gold-light">
                   {filteredImages[activeLightboxIndex].title}
                 </h3>
-                <p className="text-xs text-gold-200/90 italic mt-0.5">
+                <p className="font-invitation-body text-sm text-gold-200/90 italic mt-0.5">
                   {filteredImages[activeLightboxIndex].caption}
                 </p>
               </div>
