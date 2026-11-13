@@ -5,8 +5,6 @@ import { Navbar } from './components/Navbar';
 import { InvitationMessage } from './components/InvitationMessage';
 import { CountdownTimer } from './components/CountdownTimer';
 import { CoupleDetails } from './components/CoupleDetails';
-import { LoveStory } from './components/LoveStory';
-import { EventsTimeline } from './components/EventsTimeline';
 import { VenueSection } from './components/VenueSection';
 import { GallerySection } from './components/GallerySection';
 import { QuotesSection } from './components/QuotesSection';
@@ -73,16 +71,10 @@ export function App() {
               <CountdownTimer />
             </div>
 
-            {/* 4. Dedicated Groom (Samju M.C) & Bride (Fahiza K.K) Sections */}
+            {/* 3. Dedicated Groom (Samju M.C) & Bride (Fahiza K.K) Sections */}
             <CoupleDetails />
 
-            {/* 5. Couple's Love Story Timeline */}
-            <LoveStory />
-
-            {/* 6. Wedding Events Timeline (Haldi, Nikah Ceremony, Reception) */}
-            <EventsTimeline />
-
-            {/* 7. Wedding Venue (Nalanda Convention Centre) & Google Maps */}
+            {/* 4. Wedding Venue (Nalanda Convention Centre) & Google Maps */}
             <VenueSection />
 
             {/* 8. Wedding Moments Gallery with Lightbox */}

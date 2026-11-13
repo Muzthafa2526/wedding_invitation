@@ -18,8 +18,6 @@ export const Navbar = () => {
   const navLinks = [
     { name: 'Invitation', href: '#invitation-message' },
     { name: 'The Couple', href: '#couple' },
-    { name: 'Our Story', href: '#story' },
-    { name: 'Events', href: '#events' },
     { name: 'Venue', href: '#venue' },
     { name: 'Moments', href: '#gallery' },
   ];
