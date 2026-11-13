@@ -29,11 +29,13 @@ export const InvitationCardCover = ({ onOpenWebsite }) => {
       // safe fallback
     }
 
-    // 3. Smooth scroll down to main hero section
+    // 3. Smooth scroll down to main invitation section
     setTimeout(() => {
-      const heroElem = document.getElementById('wedding-hero');
-      if (heroElem) {
-        heroElem.scrollIntoView({ behavior: 'smooth' });
+      const target = document.getElementById('invitation-message') || document.querySelector('main');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }, 450);
   };

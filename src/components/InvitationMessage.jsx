@@ -48,7 +48,7 @@ export const InvitationMessage = () => {
   return (
     <section
       id="invitation-message"
-      className="py-24 px-4 bg-burgundy-950 luxury-fabric-texture relative overflow-hidden"
+      className="pt-28 pb-20 sm:pt-36 sm:pb-24 px-4 bg-burgundy-950/80 luxury-fabric-texture relative overflow-hidden"
     >
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-12">

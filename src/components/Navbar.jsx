@@ -44,8 +44,8 @@ export const Navbar = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between">
         {/* Brand Monogram */}
         <a
-          href="#wedding-hero"
-          onClick={(e) => handleNavClick(e, '#wedding-hero')}
+          href="#invitation-message"
+          onClick={(e) => handleNavClick(e, '#invitation-message')}
           className="flex items-center gap-2 group text-decoration-none"
         >
           <span className="font-invitation-script text-2xl sm:text-3xl font-normal text-gold-light group-hover:text-gold-200 transition-colors drop-shadow-[0_1px_4px_rgba(212,175,103,0.3)]">

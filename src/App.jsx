@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { InvitationCardCover } from './components/InvitationCardCover';
 import { Navbar } from './components/Navbar';
-import { MainHero } from './components/MainHero';
 import { InvitationMessage } from './components/InvitationMessage';
 import { CountdownTimer } from './components/CountdownTimer';
 import { CoupleDetails } from './components/CoupleDetails';
@@ -66,13 +65,10 @@ export function App() {
           <Navbar />
 
           <main>
-            {/* 1. Full-Screen Wedding Hero Section */}
-            <MainHero />
-
-            {/* 2. Formal Wedding Invitation Card & Message */}
+            {/* 1. Formal Wedding Invitation Card & Message */}
             <InvitationMessage />
 
-            {/* 3. Live Countdown Timer for January 17, 2027 */}
+            {/* 2. Live Countdown Timer for January 17, 2027 */}
             <div id="countdown">
               <CountdownTimer />
             </div>
